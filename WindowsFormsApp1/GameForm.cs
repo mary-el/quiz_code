@@ -136,6 +136,7 @@ namespace WindowsFormsApp1
             label6.Text = TimerT.ToString() + "''";
 
             timer1.Enabled = false;
+            timer2.Enabled = false;
             qTextBox11.Text = "";
             
             qTextBox11.Rtf = @"{\rtf1\ansi\ansicpg1251 " + q.Text + "}";
@@ -201,6 +202,9 @@ namespace WindowsFormsApp1
         public Label[] labels;
         public Label[] helps;
         public Label[] costs;
+        public Label[] hints_labels;
+        public Label[] forms_labels;
+        public PictureBox[] hints_pics;
         public Button[] buttons;
         public List<Button> teamb;
         public Logs logs;
@@ -419,7 +423,11 @@ namespace WindowsFormsApp1
             {
                 WelcomePics = new List<Image>();
                 foreach (String s in pics.WelcomePicsEnd)
-                    WelcomePics.Add(Image.FromFile(s));
+                    try
+                    {
+                        WelcomePics.Add(Image.FromFile(s));
+                    }
+                    catch { }
                 tabControl1.TabPages[3].Enabled = false;
                 tabControl1.TabPages[4].Enabled = false;
                 tabControl1.TabPages[5].Enabled = false;
@@ -575,7 +583,7 @@ namespace WindowsFormsApp1
 
         public void CalculatePlaces()
         {
-            ScoreList = ScoreList.OrderByDescending(u => u.Sum).ThenByDescending(u => u.LastAnswer).ThenBy(u => u.TeamN).ToList();
+            ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenBy(u => u.TeamN).ToList();
             for (int i = 0; i < ScoreList.Count; i++)
             {
                 ScoreList[i].Place = i + 1;
@@ -592,6 +600,7 @@ namespace WindowsFormsApp1
         Font fontExpN;
         Font fontQ;
         Font fontCost;
+        Font fontHints;
         Color TeamsColor;
         Color TeamsSelectedColor;
         Color ExpColor;
@@ -617,6 +626,45 @@ namespace WindowsFormsApp1
                 but.Height = teamb_h;
             }
 
+        }
+
+        private void CreateTeamsButton()
+        {
+            int TeamN = game.Teams.Count;
+            int teamb_w = flowLayoutPanel1.Width / Math.Min(4, TeamN) - 10;
+            int teamb_h = flowLayoutPanel1.Height / (int)Math.Ceiling((double)TeamN / 4) - 10;
+            flowLayoutPanel1.Controls.Clear();
+            teamb.Clear();
+
+            for (int i = 0; i < TeamN; i++)
+            {
+                if (ScoreList.Count == i)
+                {
+                    Score sc = new Score();
+                    sc.TeamN = i;
+                    sc.Team = game.Teams[i].Name;
+                    ScoreList.Add(sc);
+                }
+                Button but = new Button();
+                but.Tag = i;
+                flowLayoutPanel1.Controls.Add(but);
+                but.Width = teamb_w;
+                but.Height = teamb_h;
+                but.Click += new EventHandler(buttonT_Click);
+                but.Font = fontTeamsGame;
+                teamb.Add(but);
+                Team team = game.Teams[i];
+                but.Text = team.Short.ToUpper();
+                but.FlatStyle = FlatStyle.Flat;
+                but.FlatAppearance.BorderSize = 0;
+                but.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                but.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                but.TabStop = false;
+                but.BackColor = Color.Transparent;
+                but.ForeColor = TeamsColor;
+                if (ScoreList[i].Invisible == true)
+                    but.Visible = false;
+            }
         }
         private void GameForm_Load(object sender, EventArgs e)
         {
@@ -650,6 +698,7 @@ namespace WindowsFormsApp1
             fontExpN = new Font(familyTeams, pics.FontSizeExpN);
             fontQ = new Font(familyQ, pics.FontSizeQ);
             fontCost = new Font(familyTeams, pics.FontSizeExp);
+            fontHints = new Font(familyQ, pics.FontSizeHints);
             
             TeamsColor = ColorTranslator.FromHtml(pics.FontColorTeams);
             TeamsSelectedColor = ColorTranslator.FromHtml(pics.FontColorSelectedTeams);
@@ -658,15 +707,18 @@ namespace WindowsFormsApp1
             ColorQ = ColorTranslator.FromHtml(pics.FontColorQ);
             BackColorQ = ColorTranslator.FromHtml(pics.BackColorQ);
             ColorHelp = ColorTranslator.FromHtml(pics.FontColorHelp);
+            
 
             qTextBox11.Font = fontQ;
             qTextBox11.BackColor = BackColorQ;
             qTextBox11.ForeColor = ColorQ;
             
-            label6.Font = fontCost;
-            label6.ForeColor = CostColor;
+            label29.Font = fontCost;
+            label29.ForeColor = CostColor;
             label16.Font = fontCost;
             label16.ForeColor = CostColor;
+            label6.Font = fontCost;
+            label6.ForeColor = CostColor;
 
             score_num = game.ScoresTable;
             ScoreList = game.ScoresFinal;
@@ -706,6 +758,19 @@ namespace WindowsFormsApp1
             current_tour = game.TourN;
             teamb = new List<Button>();
             labels = new Label[] { label1, label2, label3 };
+            hints_labels = new Label[] { label10, label13, label25, label27 };
+            forms_labels = new Label[] { label12, label24, label26, label28 };
+            hints_pics = new PictureBox[] { pictureBox9, pictureBox11, pictureBox12, pictureBox13 };
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                hints_labels[i].Font = fontHints;
+                hints_labels[i].ForeColor = ColorQ;
+                forms_labels[i].Font = fontHints;
+                forms_labels[i].ForeColor = CostColor;
+            }
+
             buttons = new Button[] { button1, button2, button3, button4 };
             costs = new Label[] { label4, label17, label18, label19 };
             foreach (Label c in costs)
@@ -716,40 +781,11 @@ namespace WindowsFormsApp1
             results_showed = new List<Results>();
             answered = new int[game.Stalkers];
             current_scores = new int[game.Stalkers];
-            int TeamN = game.Teams.Count;
-            int teamb_w = flowLayoutPanel1.Width / Math.Min(4, TeamN) - 10;
-            int teamb_h = flowLayoutPanel1.Height / (int)Math.Ceiling((double)TeamN / 4) - 10;
-            flowLayoutPanel1.Controls.Clear();
             answ_pics = new string[] { pics.YesGoldPict, pics.YesSilverPict, pics.YesBronzePict };
             ScoreList = game.ScoresFinal;
+            int TeamN = game.Teams.Count;
+            CreateTeamsButton();
 
-            for (int i = 0; i < TeamN; i++)
-            {
-                if (ScoreList.Count == i)
-                {
-                    Score sc = new Score();
-                    sc.TeamN = i;
-                    sc.Team = game.Teams[i].Name;
-                    ScoreList.Add(sc);
-                }
-                Button but = new Button();
-                but.Tag = i;
-                flowLayoutPanel1.Controls.Add(but);
-                but.Width = teamb_w;
-                but.Height = teamb_h;
-                but.Click += new EventHandler(buttonT_Click);
-                but.Font = fontTeamsGame;               
-                teamb.Add(but);
-                Team team = game.Teams[i];
-                but.Text = team.Short.ToUpper();
-                but.FlatStyle = FlatStyle.Flat;
-                but.FlatAppearance.BorderSize = 0;
-                but.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                but.FlatAppearance.MouseDownBackColor = Color.Transparent;
-                but.TabStop = false;
-                but.BackColor = Color.Transparent;
-                but.ForeColor = TeamsColor;
-            }
             for (int i = 0; i < game.Stalkers; i++)
             {
                 listBox1.Items.Add("");
@@ -807,6 +843,8 @@ namespace WindowsFormsApp1
                 tableLayoutPanel5.BackgroundImage = Image.FromFile(pics.BackgroundSt);
                 panel1.BackgroundImage = Image.FromFile(pics.BackgroundSt);
                 tableLayoutPanel12.BackgroundImage = Image.FromFile(pics.BackgroundRes);
+                tableLayoutPanel13.BackgroundImage = Image.FromFile(pics.BackgroundRepeat);
+                tableLayoutPanel13.BackgroundImageLayout = ImageLayout.Stretch;
             }
             catch { }
             YesPlace.Visible = false;
@@ -1117,11 +1155,12 @@ namespace WindowsFormsApp1
             results_showed.Clear();
             resultsBindingSource.Clear();
             int LastTour = Math.Max((current_exp > 0 ? game.TourN : game.TourN - 1), 0);
-            ScoreList = ScoreList.OrderByDescending(u => u.Sum).ThenByDescending(u => u.LastAnswer).ThenBy(u => u.TeamN).ToList();
-            for (int i = 0; i < ScoreList.Count; i++)
+            ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenBy(u => u.TeamN).ToList();
+            int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
+            for (int i = 0; i < VisibleTeams; i++)
             {
                 Results res = new Results();
-                res.Place = ScoreList[i].Place;
+                res.Place = i + 1; // ScoreList[i].Place;
                 res.team = ScoreList[i].Team;
                 res.ScoreBeforeTour = ScoreList[i].Start;
                 for (int j = 0; j < LastTour; j++)
@@ -1202,7 +1241,8 @@ namespace WindowsFormsApp1
             {
                 timer1.Enabled = false;
                 label6.Text = "";
-
+                if (current_q == 3)
+                    tabControl1.SelectedIndex += 1;
             }
             tableLayoutPanel2.ResumeLayout();
         }
@@ -1309,16 +1349,31 @@ namespace WindowsFormsApp1
         {
             try
             {
+                if (e.ColumnIndex == 2)
+                {
+                    int val = (int)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                    if (val < 0)
+                    {
+                        ScoreList[e.RowIndex].Invisible = true;
+                        //CreateTeamsButton();
+                        flowLayoutPanel1.Controls[e.RowIndex].Visible = false;
+                    }
+                    else
+                    {
+                        ScoreList[e.RowIndex].Invisible = false;
+                        flowLayoutPanel1.Controls[e.RowIndex].Visible = true;
+
+                    }
+
+                }
                 foreach (Score s in ScoreList)
                 {
                     s.RecountSum();
-
                 }
                 CalculatePlaces();
                 foreach (Score s in ScoreList)
                 {
                     s.PrevPlace = s.Place;
-
                 }
 
                 game.Serialize();
@@ -1362,7 +1417,40 @@ namespace WindowsFormsApp1
                 ResultsChanged = false;
             }
             GetResults();
-
+            timer2.Enabled = false;
+            if (tabControl1.SelectedTab == tabPage4)
+            {
+                pictureBox9.Size = flowLayoutPanel4.Size;
+                pictureBox11.Size = flowLayoutPanel5.Size;
+                pictureBox12.Size = flowLayoutPanel6.Size;
+                pictureBox13.Size = flowLayoutPanel7.Size;
+                for (int i = 0; i < 4; i++)
+                {
+                    Question q = quiz.Tours[current_tour].Expeditions[current_exp].Questions[i];
+                    if (!string.IsNullOrEmpty(q.PictureQ))
+                    {
+                        try
+                        {
+                            Image pict = Image.FromFile(q.PictureQ);
+                            hints_pics[i].Image = pict;
+                            hints_pics[i].Visible = true;
+                            hints_labels[i].Text = "";
+                            forms_labels[i].Text = "";
+                        }
+                        catch
+                        { }
+                    }
+                    else
+                    {
+                        hints_pics[i].Visible = false;
+                        hints_labels[i].Text = q.Hint;
+                        forms_labels[i].Text = q.HintForm;
+                    }
+                }
+                TimerLeft = game.HintTimer;
+                label29.Text = game.HintTimer.ToString();
+                timer2.Enabled = true;
+            }
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -1411,7 +1499,6 @@ namespace WindowsFormsApp1
 
         private void myDataGridView1_Click_1(object sender, EventArgs e)
         {
-
 
         }
 
@@ -1942,6 +2029,11 @@ namespace WindowsFormsApp1
         {
             if (e.KeyCode == Keys.F10)
                 StopExp();
+            if ((e.KeyCode == Keys.N) && (tabControl1.SelectedTab == tabPage8))
+            {
+                WrongAnswer();
+                return;
+            }
             int Num = e.KeyCode - Keys.D0;
             if (((tabControl1.SelectedTab == tabPage8) || (tabControl1.SelectedTab == tabPage1)) 
                 && Num >= 1 && Num <= 4)
@@ -1965,6 +2057,45 @@ namespace WindowsFormsApp1
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (e.RowIndex == -1 || e.RowCount == 0 || e.RowCount == game.Teams.Count)
+            {
+                return;
+            }
+
+            for (int i = 0; i < e.RowCount; i++)
+            {
+                int index = e.RowIndex + i;  //get row index
+                int ind = ScoreList[index].TeamN;
+                ScoreList[ind].Invisible = true;
+
+            }
+            CalculatePlaces();
+            CreateTeamsButton();
+
+            int next_exp = current_exp + 1;
+            int next_tour = current_tour + (next_exp / ExpInTour);
+            next_exp %= ExpInTour;
+            if ((next_tour != 3) && (!game.Round3On || current_tour != 2 || current_exp != 0))
+            {
+                for (int i = 0; i < game.Teams.Count; i++)
+                    game.StalkersDelegated[next_tour][next_exp][i] = -1;
+            }
+            SetButtonsColours();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            TimerLeft -= 1;
+            if (TimerLeft == 0)
+            {
+                timer2.Enabled = false;
+                tabControl1.SelectedIndex += 1;
+            }
+            label29.Text = TimerLeft.ToString();
         }
     }
 }

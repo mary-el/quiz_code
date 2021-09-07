@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
                     exped.HelpType = $"Help {j}";
                     for (int k=1; k<=4; k++)
                     {
-                        Question q = new Question($"Expedition {j} Question {k}", $"Prompt {k}", k.ToString());
+                        Question q = new Question($"Expedition {j} Question {k}", $"Prompt {k}", k.ToString(), $"Hint to question {k} - 1\nHint to question {k} - 2", $"Form of question {k}");
                         q.AudioA = "";
                         q.AudioQ = "";
                         q.PictureA = "";
@@ -67,8 +67,7 @@ namespace WindowsFormsApp1
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-
-            string filename = saveFileDialog1.FileName;
+            string filename = SettingsForm.MakeRelative(saveFileDialog1.FileName, Directory.GetCurrentDirectory());
             game = new Game(filename);
             game.TourN = -1;
             SettingsForm startsettingsform = new SettingsForm();

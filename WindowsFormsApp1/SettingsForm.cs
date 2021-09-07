@@ -1,17 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class SettingsForm : Form
     {
+        public string dir = Directory.GetCurrentDirectory();
         public List<GameSettings> Settings { get; set; }
         public NumericUpDown[] timers;
         public SettingsForm()
@@ -23,6 +20,7 @@ namespace WindowsFormsApp1
             {
                 textBox1.Text = StartForm.game.QuizFile;
                 textBox2.Text = StartForm.game.LogFile;
+                textBox3.Text = StartForm.game.PicsFile;
                 StalkersNum.Value = StartForm.game.Stalkers;
                 for (int i = 0; i < 4; i++)
                     timers[i].Value = StartForm.game.Timer[i];
@@ -127,6 +125,7 @@ namespace WindowsFormsApp1
             }
             for (int i=0;i<4;i++)
                 StartForm.game.Timer[i] = (int)timers[i].Value;
+            StartForm.game.HintTimer = (int)numericUpDown5.Value;
             StartForm.game.SettingsL = Settings;
             StartForm.game.Round3On = false;
             StartForm.game.Stalkers = (int)StalkersNum.Value;
@@ -137,13 +136,20 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
+        public static string MakeRelative(string filePath, string referencePath)
+        {
+            var fileUri = new Uri(filePath);
+            var referenceUri = new Uri(referencePath + "/");
+            var relativeUri = referenceUri.MakeRelativeUri(fileUri);
+            return Uri.UnescapeDataString(relativeUri.ToString()).Replace('/', Path.DirectorySeparatorChar);
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-
-            string filename = openFileDialog1.FileName;
+            string filename = MakeRelative(openFileDialog1.FileName, dir);
+            
             textBox1.Text = filename;
         }
 
@@ -195,7 +201,7 @@ namespace WindowsFormsApp1
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            string filename = saveFileDialog1.FileName;
+            string filename = MakeRelative(saveFileDialog1.FileName, dir);
             textBox2.Text = filename;
         }
 
@@ -206,14 +212,18 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-
-
+            
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            string filename = openFileDialog1.FileName;
+            string filename = MakeRelative(openFileDialog1.FileName, dir);
             textBox3.Text = filename;
 
+        }
+
+        private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

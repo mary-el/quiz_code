@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public List<Team> Teams { get; set;  }
         public int Stalkers { get; set; }
         public int[] Timer { get; set; }
+        public int HintTimer { get; set; }
         public string PicsFile { get; set; }
         public List<GameSettings> SettingsL { get; set; }
         public bool Round3On { get; set; }

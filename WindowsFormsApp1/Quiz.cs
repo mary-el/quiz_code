@@ -25,9 +25,9 @@ namespace WindowsFormsApp1
 
         }
 
-        public static Quiz Deserialize(string file)
+        public static Quiz Deserialize(string rel_file)
         {
-
+            string file = Path.GetFullPath(rel_file);
             var formatter = new XmlSerializer(typeof(Quiz));
 
             using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
@@ -49,6 +49,7 @@ namespace WindowsFormsApp1
         public string BackgroundAn { get; set; }
         public string BackgroundExp { get; set; }
         public string BackgroundRes { get; set; }
+        public string BackgroundRepeat { get; set; }
         public string YesGoldPict { get; set; }
         public string YesSilverPict { get; set; }
         public string YesBronzePict { get; set; }
@@ -60,6 +61,7 @@ namespace WindowsFormsApp1
         public string FontTeams { get; set; }
         public string FontQ { get; set; }
         public int FontSizeTeams { get; set; } = 20;
+        public int FontSizeHints { get; set; } = 20;
         public int FontSizeQ { get; set; } = 25;
         public int FontSizeSelectedTeams { get; set; } = 30;
         public int FontSizeExp { get; set; } = 40;

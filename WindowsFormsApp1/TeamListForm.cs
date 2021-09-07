@@ -42,6 +42,15 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Для игры нужны не менее 4 команд", "", MessageBoxButtons.OK);
                 return;
             }
+            Teams = Teams.OrderBy(u => u.Number).ToList();
+            for (int i=0; i < Teams.Count; i++)
+            {
+                if (Teams[i].Number != i + 1)
+                {
+                    MessageBox.Show("Пронумеруйте команды последовательными числами", "", MessageBoxButtons.OK);
+                    return;
+                }
+            }
             List<List<List<int>>> Delegated = new List<List<List<int>>>();
             int st1 = 0;
             int st2 = 0;

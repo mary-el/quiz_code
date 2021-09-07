@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
         public int PrevPlace { get; set; }
         public string Team { get; set; }
         public int Start { get; set; }
+        public bool Invisible { get; set; }
         
         public int Tour1
         {
@@ -80,7 +81,8 @@ namespace WindowsFormsApp1
             ToursSt = new int[3];
             Tours = new int[3];
             LastAnswer = 100;
-            OldLastAnswer = 100;            
+            OldLastAnswer = 100;
+            Invisible = false;
         }
         public void RecountSum()
         {

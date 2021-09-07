@@ -18,12 +18,16 @@ namespace WindowsFormsApp1
         public string Video { get; set; }
         public string Prompt { get; set; }
         public string Help { get; set; }
+        public string Hint { get; set; }
+        public string HintForm { get; set; }
         public Question() { }
-        public Question(string text_, string Prompt_, string Help_)
+        public Question(string text_, string Prompt_, string Help_, string Hint_, string HintForm_)
             {
             this.Text = text_;
             this.Prompt = Prompt_;
             this.Help = Help_;
+            this.Hint = Hint_;
+            this.HintForm = HintForm_;
 
         }
     }
