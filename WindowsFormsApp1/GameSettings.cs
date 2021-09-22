@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         public int Bonus { get; set; }
         public int[] CostsSt { get; set; }
         public bool Individual { get; set; }
+        public bool NoStalkers { get; set; }
         public GameSettings() { }
         public static string[] methods = {"Чёрный ящик", "Сначала аутсайдер", "Сначала лидер", "По группам"};
             

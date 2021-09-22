@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -48,17 +49,14 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plays1DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.plays2DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.shortDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -108,6 +106,10 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // teamBindingSource
+            // 
+            this.teamBindingSource.DataSource = typeof(WindowsFormsApp1.Team);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -194,8 +196,6 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.numberDataGridViewTextBoxColumn,
-            this.plays1DataGridViewCheckBoxColumn,
-            this.plays2DataGridViewCheckBoxColumn,
             this.shortDataGridViewTextBoxColumn,
             this.Group});
             this.dataGridView1.DataSource = this.teamBindingSource;
@@ -236,10 +236,6 @@
             this.saveFileDialog1.DefaultExt = "xml";
             this.saveFileDialog1.FileName = "teams.xml";
             // 
-            // teamBindingSource
-            // 
-            this.teamBindingSource.DataSource = typeof(WindowsFormsApp1.Team);
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -254,18 +250,6 @@
             this.numberDataGridViewTextBoxColumn.HeaderText = "Номер";
             this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
             this.numberDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // plays1DataGridViewCheckBoxColumn
-            // 
-            this.plays1DataGridViewCheckBoxColumn.DataPropertyName = "Plays1";
-            this.plays1DataGridViewCheckBoxColumn.HeaderText = "1 эксп.";
-            this.plays1DataGridViewCheckBoxColumn.Name = "plays1DataGridViewCheckBoxColumn";
-            // 
-            // plays2DataGridViewCheckBoxColumn
-            // 
-            this.plays2DataGridViewCheckBoxColumn.DataPropertyName = "Plays2";
-            this.plays2DataGridViewCheckBoxColumn.HeaderText = "2 эксп.";
-            this.plays2DataGridViewCheckBoxColumn.Name = "plays2DataGridViewCheckBoxColumn";
             // 
             // shortDataGridViewTextBoxColumn
             // 
@@ -301,8 +285,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,8 +314,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn plays1DataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn plays2DataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn shortDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Group;
     }

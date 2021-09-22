@@ -80,12 +80,12 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Номера групп должны принимать значения от 1 до 3", "", MessageBoxButtons.OK);
                         return;
                     }
-                    Delegated[0][0][i] = t.Plays1  ? 1 : -1;
-                    Delegated[0][1][i] = t.Plays2  ? 1 : -1;
+                    //Delegated[0][0][i] = t.Plays1  ? 1 : -1;
+                    //Delegated[0][1][i] = t.Plays2  ? 1 : -1;
                     if ((t.Name == null) || (t.Short == null) || (t.Name.Trim() == "") || (t.Short.Trim() == ""))
                         all_named = false;
-                    st1 += t.Plays1 ? 1 : 0;
-                    st2 += t.Plays2 ? 1 : 0;
+                    //st1 += t.Plays1 ? 1 : 0;
+                    //st2 += t.Plays2 ? 1 : 0;
                 }
                 if (!all_named)
                 {
@@ -94,12 +94,6 @@ namespace WindowsFormsApp1
                 }
                 StartForm.logs = new Logs(StartForm.game.LogFile);
                 StartForm.logs.CreateFile();
-
-                if ((st1 != StartForm.game.Stalkers) || (st2 != StartForm.game.Stalkers))
-                 {
-                     MessageBox.Show("Число сталкеров не совпадает с заявленным", "", MessageBoxButtons.OK);
-                     return;
-                 }
                 StartForm.game.StalkersDelegated = Delegated;
                 StartForm.game.Teams = Teams;
                 StartForm.game.Serialize();
@@ -143,11 +137,11 @@ namespace WindowsFormsApp1
         { 
             if (dataGridView1[e.ColumnIndex, e.RowIndex].Value != null)
             {
-
+            
             if (e.ColumnIndex == 0)
             {
                 string team = dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString();
-                dataGridView1[4, e.RowIndex].Value = team;
+                dataGridView1[2, e.RowIndex].Value = team;
 
             }
            StartForm.game.Serialize();

@@ -16,70 +16,246 @@ namespace WindowsFormsApp1
         public int Start { get; set; }
         public bool Invisible { get; set; }
         
-        public int Tour1
+        public int Tour11
         {
             get
-            { return Tours[0]; }
+            { return Rounds[0]; }
             set
             {
-                Tours[0] = value;
+                Rounds[0] = value;
+            }
+        }
+        public bool St11
+        {
+            get
+            { return MissionAccomplished[0]; }
+            set
+            {
+                MissionAccomplished[0] = value;
+            }
+        }
+        public int Tour12
+        {
+            get
+            { return Rounds[1]; }
+            set
+            {
+                Rounds[1] = value;
             }
         }
 
-        public int Tour1St
-        { get
-            { return ToursSt[0]; }
-          set
-            {
-                ToursSt[0] = value;
-            }
-        }
-        public int Tour2
+        public int Tour13
         {
             get
-            { return Tours[1]; }
+            { return Rounds[2]; }
             set
             {
-                Tours[1] = value;
+                Rounds[2] = value;
             }
         }
-        public int Tour2St
+
+        public int Tour14
         {
             get
-            { return ToursSt[1]; }
+            { return Rounds[3]; }
             set
             {
-                ToursSt[1] = value;
+                Rounds[3] = value;
             }
         }
-        public int Tour3St
+        public int Tour21
         {
             get
-            { return ToursSt[2]; }
+            { return Rounds[4]; }
             set
             {
-                ToursSt[2] = value;
+                Rounds[4] = value;
             }
         }
-        public int Tour3
+        public int Tour22
         {
             get
-            { return Tours[2]; }
+            { return Rounds[5]; }
             set
             {
-                Tours[2] = value;
+                Rounds[5] = value;
             }
         }
-        public int[] ToursSt { get; set; }
-        public int[] Tours { get; set; }
+
+        public int Tour23
+        {
+            get
+            { return Rounds[6]; }
+            set
+            {
+                Rounds[6] = value;
+            }
+        }
+
+        public int Tour24
+        {
+            get
+            { return Rounds[7]; }
+            set
+            {
+                Rounds[7] = value;
+            }
+        }
+        public int Tour31
+        {
+            get
+            { return Rounds[8]; }
+            set
+            {
+                Rounds[8] = value;
+            }
+        }
+        public int Tour32
+        {
+            get
+            { return Rounds[9]; }
+            set
+            {
+                Rounds[9] = value;
+            }
+        }
+
+        public int Tour33
+        {
+            get
+            { return Rounds[10]; }
+            set
+            {
+                Rounds[10] = value;
+            }
+        }
+
+        public int Tour34
+        {
+            get
+            { return Rounds[11]; }
+            set
+            {
+                Rounds[11] = value;
+            }
+        }
+
+        public bool St12
+        {
+            get
+            { return MissionAccomplished[1]; }
+            set
+            {
+                MissionAccomplished[1] = value;
+            }
+        }
+
+        public bool St13
+        {
+            get
+            { return MissionAccomplished[2]; }
+            set
+            {
+                MissionAccomplished[2] = value;
+            }
+        }
+
+        public bool St14
+        {
+            get
+            { return MissionAccomplished[3]; }
+            set
+            {
+                MissionAccomplished[3] = value;
+            }
+        }
+        public bool St21
+        {
+            get
+            { return MissionAccomplished[4]; }
+            set
+            {
+                MissionAccomplished[4] = value;
+            }
+        }
+        public bool St22
+        {
+            get
+            { return MissionAccomplished[5]; }
+            set
+            {
+                MissionAccomplished[5] = value;
+            }
+        }
+
+        public bool St23
+        {
+            get
+            { return MissionAccomplished[6]; }
+            set
+            {
+                MissionAccomplished[6] = value;
+            }
+        }
+        public bool St24
+        {
+            get
+            { return MissionAccomplished[7]; }
+            set
+            {
+                MissionAccomplished[7] = value;
+            }
+        }
+        public bool St31
+        {
+            get
+            { return MissionAccomplished[8]; }
+            set
+            {
+                MissionAccomplished[8] = value;
+            }
+        }
+        public bool St32
+        {
+            get
+            { return MissionAccomplished[9]; }
+            set
+            {
+                MissionAccomplished[9] = value;
+            }
+        }
+
+        public bool St33
+        {
+            get
+            { return MissionAccomplished[10]; }
+            set
+            {
+                MissionAccomplished[10] = value;
+            }
+        }
+
+        public bool St34
+        {
+            get
+            { return MissionAccomplished[11]; }
+            set
+            {
+                MissionAccomplished[11] = value;
+            }
+        }
+        public int[] RoundsFull { get; set; }
+        public bool[] MissionAccomplished { get; set; }
+        public int[] Rounds { get; set; }
         public int Sum { get; set; }
         public int LastAnswer { get; set; }
         public int OldLastAnswer { get; set; }       
            
         public Score()
         {
-            ToursSt = new int[3];
-            Tours = new int[3];
+            RoundsFull = new int[12];
+            Rounds = new int[12];
+            MissionAccomplished = new bool[12];
             LastAnswer = 100;
             OldLastAnswer = 100;
             Invisible = false;
@@ -87,10 +263,12 @@ namespace WindowsFormsApp1
         public void RecountSum()
         {
             int sum = Start;
-            for (int i=0;i <3; i++)
+            for (int i=0;i <12; i++)
             {
-                sum += ToursSt[i];
-                sum += Tours[i];
+                RoundsFull[i] = Rounds[i];
+                if (MissionAccomplished[i] == true)
+                    RoundsFull[i] += Rounds[i];
+                sum += RoundsFull[i];
             }
 
             Sum = sum;
@@ -107,8 +285,52 @@ namespace WindowsFormsApp1
         public int ScoreBeforeTour { get; set; }
         public int CurrentTeamScore { get; set; }
         public int CurrentStalkersScore { get; set; }
+
+        public int Round1
+        {
+            get
+            { return Rounds[0]; }
+            set
+            {
+                Rounds[0] = value;
+            }
+        }
+        public int Round2
+        {
+            get
+            { return Rounds[1]; }
+            set
+            {
+                Rounds[1] = value;
+            }
+        }
+
+        public int Round3
+        {
+            get
+            { return Rounds[2]; }
+            set
+            {
+                Rounds[2] = value;
+            }
+        }
+
+        public int Round4
+        {
+            get
+            { return Rounds[3]; }
+            set
+            {
+                Rounds[3] = value;
+            }
+        }
+        public bool[] MissionAccomplished { get; set; }
+        public int[] Rounds { get; set; }
         public int Sum { get; set; }
-        public Results() { }
+        public Results() {
+            Rounds = new int[4];
+            MissionAccomplished = new bool[4];
+        }
         public override string ToString()
         {
             string text = $"{Place} :  {team}  (ОДТ = {ScoreBeforeTour}, ОНК = {CurrentTeamScore}, ОНС = {CurrentStalkersScore}, Сумма = {Sum})";

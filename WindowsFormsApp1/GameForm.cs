@@ -66,12 +66,16 @@ namespace WindowsFormsApp1
         public int WelcomN = 0;
         public int NoN = 0;
         public int currentYesPict = 0;
+        public int currentMissionPict = 0;
         public string[] answ_pics;
         public int media_state = 0;
         public string url = "";
         public int ExpInTour = 6;
         public int StalkerOrderMethod = 0;
         bool ResultsChanged = false;
+        myListBox[] lbs;
+        int answers_to_complete_mission = 0;
+
         public void SetPictQ(Image pict)
         {
             if (pict is null)
@@ -209,7 +213,7 @@ namespace WindowsFormsApp1
         public List<Button> teamb;
         public Logs logs;
         public Dictionary<int, Team> intToTeam;
-        public bool enabled_game;
+        // public bool enabled_game;
         public void SetButtonsColours()
         {
 
@@ -219,7 +223,7 @@ namespace WindowsFormsApp1
             int num = 0;
             for (int i = 0; i < teamb.Count; i++)
             {
-                if (game.StalkersDelegated[next_tour][next_exp][i] > 0)
+                if (game.StalkersDelegated[current_tour][current_exp][i] > 0)
                 {
                     teamb[i].ForeColor = TeamsSelectedColor;
                     teamb[i].Font = fontSelectedTeams;
@@ -231,34 +235,96 @@ namespace WindowsFormsApp1
                     teamb[i].Font = fontTeams;
                 }
             }
-            if ((num == game.Stalkers) || (game.Round3On && next_tour == 2 && next_exp <= 1))
-                enabled_game = true;
-            else
-                enabled_game = false;
+            //if ((num == game.Stalkers) || (game.Round3On && next_tour == 2 && next_exp <= 1))
+            //    enabled_game = true;
+            //else
+            //    enabled_game = false;
 
         }
 
         public void ResetStalkers()
         {
-            PlayingStalkers = new int[game.Stalkers];
+            foreach (myListBox lb in lbs)
+                lb.Items.Clear();
+            int teams_n = 0;
+            int current_box_n = -1;
+            myListBox current_box = lbs[0];
+            if (current_tour == 3)
+                return;
             for (int i = 0; i < game.Teams.Count; i++)
             {
                 int num = game.StalkersDelegated[current_tour][current_exp][i];
                 if (num > 0)
                 {
-                    listBox1.Items[num - 1] = game.Teams[i].Name;
-                    PlayingStalkers[num - 1] = i;
-                    if ((!game.Round3On) || current_tour != 2 || (current_exp > 1))
-                        listBox2.Items[num - 1] = game.Teams[i].Name.ToUpper();
-                    else
-                        listBox2.Items[num - 1] = "";
-                    if (current_exp < game.ExpeditionN)
-                        listBox3.Items[num - 1] = score_num[current_exp][num - 1];
-
+                    if (teams_n % 5 == 0)
+                    {
+                        current_box_n += 1;
+                        current_box = lbs[current_box_n];
+                    }
+                    current_box.Items.Add(game.Teams[i].Name.ToUpper());
+                    teams_n += 1;
                 }
-
             }
-        }
+            answered_count = 0;
+            if (teams_n >= 0)
+            {
+                if (teams_n == 0)
+                    answers_to_complete_mission = 5;
+                else
+                if (teams_n == 1)
+                    answers_to_complete_mission = 1;
+                else
+                if (teams_n <= 3)
+                    answers_to_complete_mission = 2;
+                else
+                if (teams_n <= 7)
+                    answers_to_complete_mission = 3;
+                else
+                    answers_to_complete_mission = 4;
+                if (answers_to_complete_mission != 5)
+                    label17.Text = answered_count.ToString() + '/' + answers_to_complete_mission.ToString();
+                else
+                    label17.Text = "";
+                int width = 1;
+                if (current_box_n >= 0)
+                    width = panel2.Width / (current_box_n + 1) - 10;
+                for (int i = 0; i <= current_box_n; i++)
+                {
+                    myListBox lb = lbs[i];
+                    lb.Visible = true;
+                    lb.Width = width;
+                    lb.Location = new Point(width * i, 0);
+                    lb.Height = panel2.Height;
+                }
+            }
+            else
+                answers_to_complete_mission = 5;
+            for (int i=current_box_n+1; i<4; i++)
+            {
+                lbs[i].Visible = false;
+            }
+
+                    /*
+                    PlayingStalkers = new int[game.Stalkers];
+                    for (int i = 0; i < game.Teams.Count; i++)
+                    {
+                        int num = game.StalkersDelegated[current_tour][current_exp][i];
+                        if (num > 0)
+                        {
+                            // listBox1.Items[num - 1] = game.Teams[i].Name;
+                            PlayingStalkers[num - 1] = i;
+                            if ((!game.Round3On) || current_tour != 2 || (current_exp > 1))
+                                listBox2.Items[num - 1] = game.Teams[i].Name.ToUpper();
+                            else
+                                listBox2.Items[num - 1] = "";
+                            if (current_exp < game.ExpeditionN)
+                                listBox3.Items[num - 1] = score_num[current_exp][num - 1];
+
+                        }
+
+                    }
+                */
+                }
         public void NextExpedition(int step)
         {
             StalkerOrderMethod = game.SettingsL[current_tour].StalkersMethod;
@@ -270,18 +336,18 @@ namespace WindowsFormsApp1
                 real_current_exp += step;
             current_q = -1;
             NextQuestion(0);
-            for (int i=0; i<game.Teams.Count; i++)
+            /* for (int i=0; i<game.Teams.Count; i++)
             {
                 int q = game.StalkersDelegated[game.TourN][game.ExpeditionN][i];
                 if (q > 0)
                     ArrayA[i, q - 1]++;
             }
-
+            */
             if (current_tour == 3)
                 return;
+            //game.StalkersDelegated[game.TourN].Add(new List<int>(game.Teams.Count));
             if (current_exp > game.ExpeditionN || game.ExpeditionN == 0)
             {
-
                 if (current_exp == ExpInTour)
                 {
                     if (current_tour == 2)
@@ -314,7 +380,7 @@ namespace WindowsFormsApp1
 
             ClearAnswers();
             ResetStalkers();
-            listBox2.selected_n = 0;
+            //listBox2.selected_n = 0;
             answered_count = 0;
             Expedition Exp = quiz.Tours[current_tour].Expeditions[current_exp];
 
@@ -328,6 +394,7 @@ namespace WindowsFormsApp1
             int next_exp = current_exp + 1;
             int next_tour = current_tour + (next_exp / ExpInTour);
             next_exp %= ExpInTour;
+            /*
             if (next_tour == 3)
             {
 
@@ -337,17 +404,18 @@ namespace WindowsFormsApp1
             }
             else
             {
-                label5.Text = quiz.Tours[next_tour].Expeditions[next_exp].Name;
+            */
+                label5.Text = quiz.Tours[current_tour].Expeditions[current_exp].Name;
                 // label15.Text = $"Раунд {(current_exp + current_tour * 6 + 2)}";
 
-                label15.Text = $"Раунд {real_current_exp + 2}";
+                label15.Text = $"Раунд {real_current_exp + 1}";
                 SetButtonsColours();
-            }
+            //}
             if (game.Round3On)
             {
                 if (next_tour == 2 && next_exp <= 1)
                 {
-                    label5.Text = "Сталкеры не играют этот и следующий раунды";
+                    //label5.Text = "Сталкеры не играют этот и следующий раунды";
                     SetButtonsColours();
                 }
                 if (current_exp <= 1)
@@ -365,20 +433,20 @@ namespace WindowsFormsApp1
                 buttons[i].Text = Exp.Questions[i].Prompt;
                 buttons[i].Font = fontTeams;
                 buttons[i].ForeColor = ColorQ;
-                if (IndTour)
-                {
+                //if (IndTour)
+                //{
                     if (answered[i] == 0)
                         helps[i].Text = Exp.Questions[i].Help;
                     else helps[i].Text = "";
                     label7.Text = Exp.HelpType;
-                }
-                else
-                {
-                    helps[i].Text = "";
-                    label7.Text = "";
-                }
+                //}
+                //else
+                //{
+                 //   helps[i].Text = "";
+                 //   label7.Text = "";
+                //}
 
-                costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * (Math.Max(PlayingStalkerNum, 0) + 2);
+                //costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * (Math.Max(PlayingStalkerNum, 0) + 2);
             }
 
             foreach (Score s in ScoreList)
@@ -391,7 +459,7 @@ namespace WindowsFormsApp1
             game.Serialize();
 
             //  dataGridView1.Sort(dataGridView1.Columns[8], ListSortDirection.Descending);
-
+            ResetStalkers();
         }
         public void NextTour(int step)
         {
@@ -438,8 +506,8 @@ namespace WindowsFormsApp1
             costsTable = new int[4];
             ExpInTour = game.SettingsL[current_tour].Length;
             StalkerOrderMethod = game.SettingsL[current_tour].StalkersMethod;
-            for (int i = 0; i < 4; i++)
-                costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * 2;
+            //for (int i = 0; i < 4; i++)
+            //    costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * 2;
             IndTour = game.SettingsL[current_tour].Individual;
             
         }
@@ -447,14 +515,16 @@ namespace WindowsFormsApp1
         private void buttonT_Click(object sender, System.EventArgs e)
         {
 
-            int next_exp = current_exp + 1;
-            int next_tour = current_tour + (next_exp / ExpInTour);
-            next_exp %= ExpInTour;
+            // int next_exp = current_exp + 1;
+            // int next_tour = current_tour + (next_exp / ExpInTour);
+            // next_exp %= ExpInTour;
             Button but = sender as Button;
-            if ((next_tour != 3) && (!game.Round3On || current_tour != 2 || current_exp != 0))
+            //if ((next_tour != 3) && (!game.Round3On || current_tour != 2 || current_exp != 0))
+            if (game.SettingsL[current_tour].NoStalkers == false)
             {
-                game.StalkersDelegated[next_tour][next_exp][(int)but.Tag] *= -1;
+                game.StalkersDelegated[current_tour][current_exp][(int)but.Tag] *= -1;
                 SetButtonsColours();
+                ResetStalkers();
             }
         }
 
@@ -563,6 +633,8 @@ namespace WindowsFormsApp1
 
         public void GetStalkers()
         {
+            if (game.SettingsL[current_tour].NoStalkers == true)
+                return;
             List<int> Sd = game.StalkersDelegated[game.TourN][game.ExpeditionN];
             if (Sd.Max() > 1)
                 return;
@@ -571,7 +643,7 @@ namespace WindowsFormsApp1
                 StalkersI = BlackBox(Sd);
             else
                 StalkersI = ByPlace(Sd, StalkerOrderMethod);
-
+            /*
             for (int i = 0; i < StalkersI.Count; i++)
             {
                 // ArrayA[StalkersI[i], i]++;
@@ -579,11 +651,13 @@ namespace WindowsFormsApp1
             }
             for (int i = 0; i < game.Teams.Count; i++)
                 game.StalkersDelegated[game.TourN][game.ExpeditionN][i] += 1;           
+            */
+        
         }
 
         public void CalculatePlaces()
         {
-            ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenBy(u => u.TeamN).ToList();
+            ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenByDescending(u => u.RoundsFull[11]).ThenByDescending(u => u.RoundsFull[10]).ThenByDescending(u => u.RoundsFull[9]).ThenByDescending(u => u.RoundsFull[8]).ThenByDescending(u => u.RoundsFull[7]).ThenByDescending(u => u.RoundsFull[6]).ThenByDescending(u => u.RoundsFull[5]).ThenByDescending(u => u.RoundsFull[4]).ThenByDescending(u => u.RoundsFull[3]).ThenByDescending(u => u.RoundsFull[2]).ThenByDescending(u => u.RoundsFull[1]).ThenByDescending(u => u.RoundsFull[0]).ToList(); // !!!!!!!!!!1
             for (int i = 0; i < ScoreList.Count; i++)
             {
                 ScoreList[i].Place = i + 1;
@@ -608,6 +682,7 @@ namespace WindowsFormsApp1
         Color ColorQ;
         Color BackColorQ;
         Color ColorHelp;
+        Color ColorMission;
         
 
         private void Form1_Load(object sender, EventArgs e)
@@ -621,11 +696,9 @@ namespace WindowsFormsApp1
             int teamb_h = flowLayoutPanel1.Height / (int)Math.Ceiling((double)TeamN / 4) - 10;
             foreach (Button but in teamb)
             {
-
                 but.Width = teamb_w;
                 but.Height = teamb_h;
             }
-
         }
 
         private void CreateTeamsButton()
@@ -668,11 +741,18 @@ namespace WindowsFormsApp1
         }
         private void GameForm_Load(object sender, EventArgs e)
         {
+
+            lbs = new myListBox[] {
+                listBox2,
+                listBox3,
+                listBox4,
+                listBox5
+            };
             this.KeyPreview = true;
             //CultureInfo.CurrentCulture = new CultureInfo("ru-RU");
             //CultureInfo.CurrentUICulture = new CultureInfo("ru-RU");
             this.DoubleBuffered = true;
-            listBox3.Width = (int)(listBox3.Parent.Width * 0.2);
+            // listBox3.Width = (int)(listBox3.Parent.Width * 0.2);
             tabControl1.ItemSize = new Size(0, 1);
             WMPq.BringToFront();
             game = StartForm.game;
@@ -707,6 +787,7 @@ namespace WindowsFormsApp1
             ColorQ = ColorTranslator.FromHtml(pics.FontColorQ);
             BackColorQ = ColorTranslator.FromHtml(pics.BackColorQ);
             ColorHelp = ColorTranslator.FromHtml(pics.FontColorHelp);
+            ColorMission = ColorTranslator.FromHtml(pics.FontColorMission);
             
 
             qTextBox11.Font = fontQ;
@@ -785,13 +866,14 @@ namespace WindowsFormsApp1
             ScoreList = game.ScoresFinal;
             int TeamN = game.Teams.Count;
             CreateTeamsButton();
-
+            /*
             for (int i = 0; i < game.Stalkers; i++)
             {
-                listBox1.Items.Add("");
+                // listBox1.Items.Add("");
                 listBox2.Items.Add("");
                 listBox3.Items.Add("");
             }
+            */
             GetResults();
             current_q = -1;
             NextTour(0);
@@ -889,18 +971,19 @@ namespace WindowsFormsApp1
             myDataGridView1.RowHeadersDefaultCellStyle.Font = fontTeams;
             myDataGridView1.Font = fontSelectedTeams;
             myDataGridView1.ForeColor = ColorQ;
-            myDataGridView1.Columns[5].DefaultCellStyle.ForeColor = TeamsSelectedColor;
-            myDataGridView1.Columns[6].DefaultCellStyle.ForeColor = ColorHelp;
+            myDataGridView1.Columns[7].DefaultCellStyle.ForeColor = TeamsSelectedColor;
+            myDataGridView1.Columns[8].DefaultCellStyle.ForeColor = ColorHelp;
             // myDataGridView1.RowHeadersDefaultCellStyle.ForeColor = Color.White;
-            myListBox[] lbs = new myListBox[] {listBox1, listBox2, listBox3 };
-            listBox1.Font = fontSelectedTeams;
-            listBox2.Font = fontTeamsGame;
-            listBox3.Font = fontTeamsGame;
+            // listBox1.Font = fontSelectedTeams;
+            // listBox3.Font = fontTeamsGame;
             foreach (myListBox lb in lbs)
             {
                 lb.DrawMode = DrawMode.OwnerDrawVariable;
-                lb.ItemHeight = (int)(lb.Font.Height * 1.5);
+                lb.Font = fontTeamsGame;
+                lb.ItemHeight = (int)(panel2.Height / 5);
                 lb.ForeColor = TeamsColor;
+                lb.SelectedColor = TeamsSelectedColor;
+                lb.SelectedFont = fontSelectedTeams;
             }
             foreach (Label lab in costs)
             {
@@ -913,9 +996,9 @@ namespace WindowsFormsApp1
                 lab.Font = fontCost;
                 lab.ForeColor = ColorHelp;
             }
-            listBox2.SelectedColor = TeamsSelectedColor;
-            listBox2.SelectedFont = fontSelectedTeams;
-            listBox2.selected_n = 0;
+            //listBox2.SelectedColor = TeamsSelectedColor;
+            //listBox2.SelectedFont = fontSelectedTeams;
+            //listBox2.selected_n = 0;
             label7.Font = fontSelectedTeams;
             label7.ForeColor = ColorHelp;
             YesPlace.BringToFront();
@@ -927,12 +1010,13 @@ namespace WindowsFormsApp1
             label11.Font = fontSelectedTeams;
             label11.ForeColor = TeamsColor;
             myDataGridView1.RowTemplate.Height = (int)((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / 12);
+            ResetStalkers();
             
         }
         private void AddScore(int num, int cost)
         {
             current_scores[num] += cost;
-            ScoreList[PlayingStalkers[num]].ToursSt[game.TourN] += cost;
+            ScoreList[PlayingStalkers[num]].RoundsFull[game.TourN] += cost;
             listBox3.Items[num] = current_scores[num].ToString();
             ScoreList[PlayingStalkers[num]].RecountSum();
         }
@@ -940,11 +1024,11 @@ namespace WindowsFormsApp1
         public void ClearCosts()
         {
             PlayingStalkerNum = -1;
-            listBox2.selected_n = -1;
-            listBox2.Refresh();
+            //listBox2.selected_n = -1;
+            //listBox2.Refresh();
             for (int i = 0; i < 4; i++)
             {
-                costs[i].Text = "";
+                //costs[i].Text = "";
                 helps[i].Text = "";
             }
         }
@@ -990,7 +1074,7 @@ namespace WindowsFormsApp1
         private void SetPlayer(int newPlayer)
         {
             PlayingStalkerNum = newPlayer;
-            listBox2.selected_n = PlayingStalkerNum;
+            //listBox2.selected_n = PlayingStalkerNum;
             if ((answered_count == 4) && (IndTour))
             {
                 if (PlayingStalkerNum < game.Stalkers)
@@ -1007,6 +1091,7 @@ namespace WindowsFormsApp1
             {
                 for (int i = 0; i < 4; i++)
                 {
+                    /*
                     costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * (Math.Max(PlayingStalkerNum, 0) + 2);
                     if (answered[i] == 0) 
                         costs[i].Text = "+" + (costsTable[i]).ToString();
@@ -1015,10 +1100,11 @@ namespace WindowsFormsApp1
                         costs[i].Text = "";
                         helps[i].Text = "";
                     }
+                    */
                 }
 
             }
-            listBox2.Refresh();
+            //listBox2.Refresh();
         }
 
         public void ShowMessage(String text)
@@ -1064,9 +1150,54 @@ namespace WindowsFormsApp1
             }
             answered[tag] = 1;
             but.Text = "";
-            answered_count += 1;
-            
             SetAnswColors();
+            if (answered_count == -1)
+                return;
+            answered_count += 1;
+            if ((answered_count < answers_to_complete_mission) && (answers_to_complete_mission != 5))
+            {
+                label17.Text = answered_count.ToString() + '/' + answers_to_complete_mission.ToString();
+
+                for (int i = 0; i < pics.YesPics.Count; i++)
+                {
+                    try
+                    {
+                        pictureBox10.Image = Image.FromFile(pics.YesPics[currentYesPict]);
+                        break;
+                    }
+                    catch
+                    {
+                    }
+                    currentYesPict = (currentYesPict + 1) % pics.YesPics.Count;
+                }
+                currentYesPict = (currentYesPict + 1) % pics.YesPics.Count;
+                panel1.Visible = true;
+            }
+            if (answered_count == answers_to_complete_mission)
+            {
+                for (int i=0; i<game.Teams.Count; i++)
+                {
+                    if (game.StalkersDelegated[game.TourN][game.ExpeditionN][i] == 1)
+                        ScoreList[i].MissionAccomplished[real_current_exp] = true;
+                }
+                label17.Text = "";
+
+                for (int i = 0; i < pics.MissionAccomplished.Count; i++)
+                {
+                    try
+                    {
+                        pictureBox10.Image = Image.FromFile(pics.MissionAccomplished[currentMissionPict]);
+                        break;
+                    }
+                    catch
+                    {
+                    }
+                    currentMissionPict = (currentMissionPict + 1) % pics.MissionAccomplished.Count;
+                }
+                currentMissionPict = (currentMissionPict + 1) % pics.MissionAccomplished.Count;
+                panel1.Visible = true;
+            }
+            /*
             if ((PlayingStalkerNum >= 0) && (!game.Round3On || current_tour != 2 || current_exp > 1) && current_exp == game.ExpeditionN)
             {
                 int team = PlayingStalkers[PlayingStalkerNum];
@@ -1145,29 +1276,40 @@ namespace WindowsFormsApp1
                     s.PrevPlace = s.Place;
 
                 }
-
             }
+                */
 
         }
         private void GetResults()
         {
+
+            for (int i = 0; i < game.Stalkers; i++)
+            {
+                ScoreList[i].RecountSum();
+            }
             results.Clear();
             results_showed.Clear();
             resultsBindingSource.Clear();
             int LastTour = Math.Max((current_exp > 0 ? game.TourN : game.TourN - 1), 0);
-            ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenBy(u => u.TeamN).ToList();
+            ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenByDescending(u => u.RoundsFull[11]).ThenByDescending(u => u.RoundsFull[10]).ThenByDescending(u => u.RoundsFull[9]).ThenByDescending(u => u.RoundsFull[8]).ThenByDescending(u => u.RoundsFull[7]).ThenByDescending(u => u.RoundsFull[6]).ThenByDescending(u => u.RoundsFull[5]).ThenByDescending(u => u.RoundsFull[4]).ThenByDescending(u => u.RoundsFull[3]).ThenByDescending(u => u.RoundsFull[2]).ThenByDescending(u => u.RoundsFull[1]).ThenByDescending(u => u.RoundsFull[0]).ToList();
             int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
             for (int i = 0; i < VisibleTeams; i++)
-            {
+            {       
                 Results res = new Results();
                 res.Place = i + 1; // ScoreList[i].Place;
                 res.team = ScoreList[i].Team;
                 res.ScoreBeforeTour = ScoreList[i].Start;
                 for (int j = 0; j < LastTour; j++)
-                    res.ScoreBeforeTour += ScoreList[i].Tours[j] + ScoreList[i].ToursSt[j];
-                res.CurrentTeamScore = ScoreList[i].Tours[LastTour];
-                res.CurrentStalkersScore = ScoreList[i].ToursSt[LastTour];
-                res.Sum = res.CurrentStalkersScore + res.CurrentTeamScore + res.ScoreBeforeTour;
+                    for (int k = 0; k < 4; k++)
+                    res.ScoreBeforeTour += ScoreList[i].RoundsFull[j*4 + k];
+                res.CurrentTeamScore = 0;
+                for (int k = 0; k < 4; k++)
+                {
+                    res.CurrentTeamScore += ScoreList[i].RoundsFull[LastTour * 4 + k];
+                    res.Rounds[k] = ScoreList[i].RoundsFull[LastTour * 4 + k];
+                    res.MissionAccomplished[k] = ScoreList[i].MissionAccomplished[LastTour * 4 + k];
+                }  
+                res.Sum = res.CurrentTeamScore + res.ScoreBeforeTour;
                 results.Add(res);
             }
             results = results.OrderByDescending(u => u.Place).ToList();
@@ -1277,14 +1419,14 @@ namespace WindowsFormsApp1
         {
             answered_count = 0;
             PlayingStalkerNum = 0;
-            listBox2.selected_n = 0;
+            //listBox2.selected_n = 0;
             Expedition Exp = quiz.Tours[current_tour].Expeditions[current_exp];
 
             for (int j = 0; j < 4; j++)
             {
                 answered[j] = 0;
-                costsTable[j] = game.SettingsL[current_tour].CostsSt[j] * 2;
-                costs[j].Text = "+" + costsTable[j].ToString();
+                //costsTable[j] = game.SettingsL[current_tour].CostsSt[j] * 2;
+                // costs[j].Text = "+" + costsTable[j].ToString();
                 /* else
                 {
                     costs[j].Text = "";
@@ -1299,7 +1441,7 @@ namespace WindowsFormsApp1
             }
             for (int i = 0; i < game.Stalkers; i++)
             {
-                listBox3.Items[i] = "";
+                // listBox3.Items[i] = "";
                 current_scores[i] = 0;
                 ScoreList[i].RecountSum();
             }
@@ -1309,28 +1451,35 @@ namespace WindowsFormsApp1
         }
         public void CancelAnsw(bool TeamMistake)
         {
-            for (int i = 0; i < game.Stalkers; i++)
-                ScoreList[PlayingStalkers[i]].ToursSt[current_tour] -= current_scores[i];
-             
-            if (!TeamMistake)
-                ClearAnswers();
+            //for (int i = 0; i < game.Stalkers; i++)
+            //    ScoreList[PlayingStalkers[i]].ToursSt[current_tour] -= current_scores[i];
 
-            for (int i = 0; i < game.Stalkers; i++)
-            {
-                listBox3.Items[i] = "";
-                current_scores[i] = 0;
-                ScoreList[i].RecountSum();
-            }
+            //if (!TeamMistake)
+           ClearAnswers();
+            /*
+           for (int i = 0; i < game.Stalkers; i++)
+           {
+               //listBox3.Items[i] = "";
+               current_scores[i] = 0;
+               ScoreList[i].RecountSum();
+           }
+           foreach (Score s in ScoreList)
+           {
+               s.RecountSum();
+               s.LastAnswer = s.OldLastAnswer;
+           }
+           CalculatePlaces();
+           PlayingStalkerNum = 0;
+           SetPlayer(PlayingStalkerNum);
+           */
+           label17.Text = answered_count.ToString() + '/' + answers_to_complete_mission.ToString();
+            
+                for (int i = 0; i < game.Teams.Count; i++)
+                {
+                    ScoreList[i].MissionAccomplished[real_current_exp] = false;
+                }
 
-            foreach (Score s in ScoreList)
-            {
-                s.RecountSum();
-                s.LastAnswer = s.OldLastAnswer;
             }
-            CalculatePlaces();
-            PlayingStalkerNum = 0;
-            SetPlayer(PlayingStalkerNum);
-        }
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -1410,6 +1559,8 @@ namespace WindowsFormsApp1
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (current_tour == 3)
+                return;
             if ((tabControl1.SelectedIndex == 1) && (current_q == -1) && (ResultsChanged))
             {
                 GetResults();
@@ -1553,14 +1704,23 @@ namespace WindowsFormsApp1
                 if (tabControl1.SelectedIndex < tabControl1.TabPages.Count)
                     tabControl1.SelectedIndex += 1;
                 if (current_tour == 2 && current_exp == ExpInTour && tabControl1.SelectedIndex == 5)
-                    tabControl1.SelectedIndex += 1;                    
+                    tabControl1.SelectedIndex += 1;
 
+                if ((tabControl1.SelectedIndex == 4) && (current_tour < 3) && (game.SettingsL[current_tour].NoStalkers == true))
+                {
+                    tabControl1.SelectedIndex += 1;
+                }
             }
 
             if (e.KeyCode == Keys.PageUp)
             {
                 if (tabControl1.SelectedIndex > 0)
                     tabControl1.SelectedIndex -= 1;
+
+                if ((tabControl1.SelectedIndex == 4) && (current_tour < 3) && (game.SettingsL[current_tour].NoStalkers == true))
+                {
+                    tabControl1.SelectedIndex -= 1;
+                }
             }
 
         }
@@ -1650,8 +1810,10 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-
-            tabControl1.SelectedIndex += 1;
+            if (game.SettingsL[current_tour].NoStalkers == false)
+                tabControl1.SelectedIndex += 1;
+            else
+                tabControl1.SelectedIndex += 2;
         }
 
         private void label15_Click(object sender, EventArgs e)
@@ -1662,10 +1824,10 @@ namespace WindowsFormsApp1
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            if (enabled_game)
-                tabControl1.SelectedIndex += 1;
-            else
-                ShowMessage($"Выберите команды ({game.Stalkers}) для следующего раунда");
+            // if (enabled_game)
+            tabControl1.SelectedIndex += 1;
+            // else
+               //  ShowMessage($"Выберите команды ({game.Stalkers}) для следующего раунда");
         }
 
         private void button5_Click_2(object sender, EventArgs e)
@@ -1724,6 +1886,11 @@ namespace WindowsFormsApp1
 
         private void myDataGridView1_Click_2(object sender, EventArgs e)
         {
+            if (ResultsChanged == true)
+            {
+                GetResults();
+                ResultsChanged = false;
+            }
 
             if (resultsBindingSource.Count < results.Count)
             {
@@ -1737,6 +1904,15 @@ namespace WindowsFormsApp1
                 }
                 else
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = TeamsColor;
+                for (int i=0; i<4; i++)
+                {
+                    bool acc = results[resultsBindingSource.Count - 1].MissionAccomplished[i];
+                    if (acc == true)
+                        myDataGridView1.Rows[0].Cells[i + 3].Style.ForeColor = ColorMission;
+                    else
+                        myDataGridView1.Rows[0].Cells[i + 3].Style.ForeColor = TeamsColor;
+
+                }
 
                 myDataGridView1.Refresh();
             }
@@ -1841,9 +2017,8 @@ namespace WindowsFormsApp1
 
         public void WrongAnswer()
         {
-            if (PlayingStalkerNum >= 0)
-            {
-                SetPlayer(PlayingStalkerNum + 1);
+            answered_count = -1;
+            label17.Text = "";
                     if (pics.NoPics != null)
                     {
                         for (int i=0; i<pics.NoPics.Count; i++)
@@ -1860,7 +2035,7 @@ namespace WindowsFormsApp1
                         NoN = (NoN + 1) % pics.NoPics.Count;
                         panel1.Visible = true;
                     }
-
+                    /*
                 if (!IndTour)
                 {
                     CancelAnsw(true);
@@ -1869,10 +2044,11 @@ namespace WindowsFormsApp1
                 }
                 if (IndTour && PlayingStalkerNum >= 0)
                 {
-                    listBox3.Items[PlayingStalkerNum] = "";
+                    //listBox3.Items[PlayingStalkerNum] = "";
 
                 }
             }
+            */
         }
 
         private void tableLayoutPanel20_Click(object sender, EventArgs e)
@@ -1949,10 +2125,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            if (enabled_game)
-                NextExpedition(1);
-            else
-                ShowMessage($"Выберите команды ({game.Stalkers}) для следующего раунда");
+            NextExpedition(1);
         }
 
         private void button11_Click_1(object sender, EventArgs e)
@@ -1988,7 +2161,7 @@ namespace WindowsFormsApp1
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            
+           
         }
 
         private void tableLayoutPanel17_Paint(object sender, PaintEventArgs e)
@@ -1998,8 +2171,8 @@ namespace WindowsFormsApp1
 
         private void listBox3_Click(object sender, EventArgs e)
         {
-            if (!IndTour)
-                SetPlayer(-1);
+
+            CancelAnsw(false);
         }
 
         private void listBox2_Click(object sender, EventArgs e)
@@ -2035,6 +2208,7 @@ namespace WindowsFormsApp1
                 return;
             }
             int Num = e.KeyCode - Keys.D0;
+            /*
             if (((tabControl1.SelectedTab == tabPage8) || (tabControl1.SelectedTab == tabPage1)) 
                 && Num >= 1 && Num <= 4)
             {
@@ -2052,6 +2226,7 @@ namespace WindowsFormsApp1
                 GetStalkers();
                 ResetStalkers();
             }
+            */
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -2094,8 +2269,34 @@ namespace WindowsFormsApp1
             {
                 timer2.Enabled = false;
                 tabControl1.SelectedIndex += 1;
+                //if (game.SettingsL[current_tour].NoStalkers == true)
+                //    NextExpedition(1);
             }
             label29.Text = TimerLeft.ToString();
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+            if (answered_count == -1)
+                return;
+            WrongAnswer();
+
+        }
+
+        private void listBox4_Click(object sender, EventArgs e)
+        {
+
+            CancelAnsw(false);
+        }
+
+        private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox5_Click(object sender, EventArgs e)
+        {
+            CancelAnsw(false);
         }
     }
 }

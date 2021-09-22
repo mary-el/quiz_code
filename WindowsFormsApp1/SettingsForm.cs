@@ -28,23 +28,26 @@ namespace WindowsFormsApp1
             }
 
             Settings = new List<GameSettings>();
-            Settings.Add(new GameSettings() {TourN=1, StalkersMethod=1, Length=6, Cost = new int[] {8, 6, 4, 2 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true});
-            Settings.Add(new GameSettings() {TourN=2, StalkersMethod=1, Length=6, Cost = new int[] {8, 6, 4, 2 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true});
-            Settings.Add(new GameSettings() {TourN=3, StalkersMethod=1, Length=6, Cost = new int[] {12, 9, 6, 3}, Bonus=10, CostsSt = new int[] { 8, 6, 4, 2}, Individual=true});
+            Settings.Add(new GameSettings() {TourN=1, StalkersMethod=1, Length=4, Cost = new int[] {8, 6, 4, 2 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true, NoStalkers=true});
+            Settings.Add(new GameSettings() {TourN=2, StalkersMethod=1, Length=4, Cost = new int[] {8, 6, 4, 2 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true, NoStalkers=true});
+            Settings.Add(new GameSettings() {TourN=3, StalkersMethod=1, Length=4, Cost = new int[] {12, 9, 6, 3}, Bonus=10, CostsSt = new int[] { 8, 6, 4, 2}, Individual=true, NoStalkers=false});
 
         }
-        private int Fields = 12;
+        private int Fields = 11;
 
         private void Settings_Load(object sender, EventArgs e)
         {
             dataGridView2.RowCount = 3;
             dataGridView2.ColumnCount = Fields;
-            DataGridViewCheckBoxColumn bc = new DataGridViewCheckBoxColumn();
-            dataGridView2.Columns.Add(bc);
+            //DataGridViewCheckBoxColumn bc = new DataGridViewCheckBoxColumn();
+            DataGridViewCheckBoxColumn ns = new DataGridViewCheckBoxColumn();
+            //dataGridView2.Columns.Add(bc);
+            dataGridView2.Columns.Add(ns);
             dataGridView2.Columns[5].HeaderText = "бонус";
-            dataGridView2.Columns[Fields].HeaderText = "инд";
+            // dataGridView2.Columns[Fields - 1].HeaderText = "инд";
+            dataGridView2.Columns[Fields].HeaderText = "без ст";
             dataGridView2.Columns[10].HeaderText = "длина";
-            dataGridView2.Columns[11].HeaderText = "очер (1-4)";
+            // dataGridView2.Columns[11].HeaderText = "очер (1-4)";
             for (int i=0; i<3; i++)
             {
                 dataGridView2.Columns[0].HeaderText = "тур";
@@ -58,9 +61,10 @@ namespace WindowsFormsApp1
                 }
 
                 dataGridView2[10, i].Value = Settings[i].Length;
-                dataGridView2[11, i].Value = Settings[i].StalkersMethod;
+                // dataGridView2[11, i].Value = Settings[i].StalkersMethod;
                 dataGridView2[5, i].Value = Settings[i].Bonus;
-                dataGridView2[Fields, i].Value = Settings[i].Individual;
+                // dataGridView2[Fields - 1, i].Value = Settings[i].Individual;
+                dataGridView2[Fields, i].Value = Settings[i].NoStalkers;
                                
             }
 
@@ -79,6 +83,8 @@ namespace WindowsFormsApp1
                 for (int i=0;i<3; i++)
                 {
                     int TourLength = Convert.ToInt32(dataGridView2[10, i].Value);
+                    if (TourLength != 4)
+                        throw new Exception();
                     if (StartForm.quiz.Tours[i].Expeditions.Count < TourLength)
                         throw new Exception();
                     for (int j = 0; j < TourLength; j++)
@@ -104,7 +110,7 @@ namespace WindowsFormsApp1
             StartForm.game.PicsFile = textBox3.Text;
             for (int i=0; i<3; i++)
             {
-                for (int j = 0; j < Fields; j++)
+                for (int j = 0; j < Fields - 1; j++)
                     dataGridView2[j, i].Value = Convert.ToInt32(dataGridView2[j, i].Value);
                 GameSettings gs = new GameSettings();
                 gs.TourN = (int)dataGridView2[0, i].Value;
@@ -118,8 +124,9 @@ namespace WindowsFormsApp1
 
                 gs.Bonus = (int)dataGridView2[5, i].Value;
                 gs.Length = (int)dataGridView2[10, i].Value;
-                gs.StalkersMethod = (int)dataGridView2[11, i].Value;
-                gs.Individual = (bool)dataGridView2[Fields, i].Value;
+                // gs.StalkersMethod = (int)dataGridView2[11, i].Value;
+                //gs.Individual = (bool)dataGridView2[Fields - 1, i].Value;
+                gs.NoStalkers = (bool)dataGridView2[Fields, i].Value;
                 gs.Bonus = (int)dataGridView2[5, i].Value;
                 Settings.Add(gs);
             }
@@ -175,7 +182,7 @@ namespace WindowsFormsApp1
 
         private void dataGridView2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex == Fields)
+            if (e.ColumnIndex >= Fields - 1)
                 return;
             int newInteger;
 

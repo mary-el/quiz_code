@@ -55,6 +55,7 @@ namespace WindowsFormsApp1
         public string YesBronzePict { get; set; }
         public List<string> NoPics { get; set; }
         public List<string> YesPics { get; set; }
+        public List<string> MissionAccomplished { get; set; }
         public List<string> WelcomePicsStart { get; set; }
         public List<string> WelcomePicsMid { get; set; }
         public List<string> WelcomePicsEnd { get; set; }
@@ -74,6 +75,7 @@ namespace WindowsFormsApp1
         public string FontColorQ { get; set; } = "0xffffff";
         public string BackColorQ { get; set; } = "0x000000";
         public string FontColorHelp { get; set; } = "0x00ffff";
+        public string FontColorMission { get; set; } = "0xff0000";
         public Pics() { }
 
         public void Serialize(string name)

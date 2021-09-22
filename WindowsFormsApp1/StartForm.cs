@@ -45,7 +45,8 @@ namespace WindowsFormsApp1
                         q.AudioQ = "";
                         q.PictureA = "";
                         q.PictureQ = "";
-                        q.Video = "";                       
+                        q.Video = "";
+                        q.Answer = $"Answer {k}";
                         exped.Questions.Add(q);
                     }
                     tour_.Expeditions.Add(exped);
