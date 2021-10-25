@@ -16,6 +16,15 @@ namespace WindowsFormsApp1
 {
     public partial class GameForm : Form
     {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
         public GameForm()
         {
 
@@ -672,6 +681,8 @@ namespace WindowsFormsApp1
             //CultureInfo.CurrentCulture = new CultureInfo("ru-RU");
             //CultureInfo.CurrentUICulture = new CultureInfo("ru-RU");
             this.DoubleBuffered = true;
+            this.AllowTransparency = true;
+            this.Opacity = 100;
             listBox3.Width = (int)(listBox3.Parent.Width * 0.2);
             tabControl1.ItemSize = new Size(0, 1);
             WMPq.BringToFront();
@@ -859,8 +870,29 @@ namespace WindowsFormsApp1
                 SetDoubleBuffered(tableLayoutPanel8);
                 SetDoubleBuffered(tableLayoutPanel4);
                 SetDoubleBuffered(tableLayoutPanel5);
+                SetDoubleBuffered(tableLayoutPanel6);
+                SetDoubleBuffered(tableLayoutPanel7);
+                SetDoubleBuffered(tableLayoutPanel8);
+                SetDoubleBuffered(tableLayoutPanel9);
+                SetDoubleBuffered(tableLayoutPanel10);
+                SetDoubleBuffered(tableLayoutPanel11);
                 SetDoubleBuffered(tableLayoutPanel12);
+                SetDoubleBuffered(tableLayoutPanel16);
                 SetDoubleBuffered(YesPlace);
+                SetDoubleBuffered(tableLayoutPanel13);
+                SetDoubleBuffered(tableLayoutPanel15);
+                SetDoubleBuffered(flowLayoutPanel1);
+                SetDoubleBuffered(flowLayoutPanel2);
+                SetDoubleBuffered(flowLayoutPanel3);
+                SetDoubleBuffered(flowLayoutPanel4);
+                SetDoubleBuffered(flowLayoutPanel5);
+                SetDoubleBuffered(flowLayoutPanel6);
+                SetDoubleBuffered(flowLayoutPanel7);
+                SetDoubleBuffered(tableLayoutPanel18);
+                SetDoubleBuffered(myDataGridView1);
+                SetDoubleBuffered(label5);
+                SetDoubleBuffered(label1);
+                SetDoubleBuffered(label14);
 
 
             foreach (Score s in ScoreList)
@@ -1217,19 +1249,12 @@ namespace WindowsFormsApp1
         }
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {
-            if (System.Windows.Forms.SystemInformation.TerminalServerSession)
-                return;
-            System.Reflection.PropertyInfo aProp = typeof(System.Windows.Forms.Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            aProp.SetValue(c, true, null);
-        }
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
+            //if (System.Windows.Forms.SystemInformation.TerminalServerSession)
+             //   return;
+            //System.Reflection.PropertyInfo aProp = typeof(System.Windows.Forms.Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            //aProp.SetValue(c, true, null);
+            typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty).SetValue(c, true, null);
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
