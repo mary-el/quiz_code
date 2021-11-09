@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.placeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +69,6 @@
             this.WMPq = new AxWMPLib.AxWindowsMediaPlayer();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox1 = new WindowsFormsApp1.myListBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,29 +77,10 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.myDataGridView1 = new WindowsFormsApp1.MyDataGridView();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.scoreBeforeTourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentTeamScoreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentStalkersScoreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Place = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.scoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -131,8 +111,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox3 = new WindowsFormsApp1.myListBox();
-            this.listBox2 = new WindowsFormsApp1.myListBox();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -170,11 +148,34 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.scoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myDataGridView1 = new WindowsFormsApp1.MyDataGridView();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.scoreBeforeTourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentTeamScoreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentStalkersScoreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listBox1 = new WindowsFormsApp1.myListBox();
+            this.listBox3 = new WindowsFormsApp1.myListBox();
+            this.listBox2 = new WindowsFormsApp1.myListBox();
             this.myListBox1 = new WindowsFormsApp1.myListBox();
             this.myDataGridView2 = new WindowsFormsApp1.MyDataGridView();
             this.myListBox2 = new WindowsFormsApp1.myListBox();
             this.myListBox3 = new WindowsFormsApp1.myListBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -196,12 +197,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.tabPage7.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scoreBindingSource)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -227,6 +225,9 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WMPa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scoreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -602,17 +603,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1122, 582);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(3, 317);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(1116, 262);
-            this.listBox1.TabIndex = 5;
-            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 2;
@@ -725,125 +715,6 @@
             this.tableLayoutPanel12.Size = new System.Drawing.Size(1128, 588);
             this.tableLayoutPanel12.TabIndex = 6;
             // 
-            // myDataGridView1
-            // 
-            this.myDataGridView1.AllowUserToAddRows = false;
-            this.myDataGridView1.AllowUserToDeleteRows = false;
-            this.myDataGridView1.AllowUserToResizeColumns = false;
-            this.myDataGridView1.AllowUserToResizeRows = false;
-            this.myDataGridView1.AutoGenerateColumns = false;
-            this.myDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.myDataGridView1.CausesValidation = false;
-            this.myDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.myDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.myDataGridView1.ColumnHeadersHeight = 60;
-            this.myDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.myDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn10,
-            this.Column2,
-            this.scoreBeforeTourDataGridViewTextBoxColumn1,
-            this.currentTeamScoreDataGridViewTextBoxColumn1,
-            this.currentStalkersScoreDataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn11,
-            this.placeDataGridViewTextBoxColumn1});
-            this.myDataGridView1.DataSource = this.resultsBindingSource;
-            this.myDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.myDataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.myDataGridView1.MultiSelect = false;
-            this.myDataGridView1.Name = "myDataGridView1";
-            this.myDataGridView1.ReadOnly = true;
-            this.myDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.myDataGridView1.RowHeadersVisible = false;
-            this.myDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLayoutPanel12.SetRowSpan(this.myDataGridView1, 2);
-            this.myDataGridView1.RowTemplate.Height = 35;
-            this.myDataGridView1.RowTemplate.ReadOnly = true;
-            this.myDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.myDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.myDataGridView1.Size = new System.Drawing.Size(952, 582);
-            this.myDataGridView1.TabIndex = 0;
-            this.myDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.myDataGridView1_CellContentClick_1);
-            this.myDataGridView1.Click += new System.EventHandler(this.myDataGridView1_Click_2);
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "team";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn10.FillWeight = 51F;
-            this.dataGridViewTextBoxColumn10.HeaderText = "";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 2F;
-            this.Column2.HeaderText = "";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // scoreBeforeTourDataGridViewTextBoxColumn1
-            // 
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.DataPropertyName = "ScoreBeforeTour";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.FillWeight = 9F;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.HeaderText = "";
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.Name = "scoreBeforeTourDataGridViewTextBoxColumn1";
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // currentTeamScoreDataGridViewTextBoxColumn1
-            // 
-            this.currentTeamScoreDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.currentTeamScoreDataGridViewTextBoxColumn1.DataPropertyName = "CurrentTeamScore";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.currentTeamScoreDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.currentTeamScoreDataGridViewTextBoxColumn1.FillWeight = 8F;
-            this.currentTeamScoreDataGridViewTextBoxColumn1.HeaderText = "";
-            this.currentTeamScoreDataGridViewTextBoxColumn1.Name = "currentTeamScoreDataGridViewTextBoxColumn1";
-            this.currentTeamScoreDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // currentStalkersScoreDataGridViewTextBoxColumn1
-            // 
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.DataPropertyName = "CurrentStalkersScore";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.FillWeight = 8F;
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.HeaderText = "";
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.Name = "currentStalkersScoreDataGridViewTextBoxColumn1";
-            this.currentStalkersScoreDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Sum";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn11.FillWeight = 8F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // placeDataGridViewTextBoxColumn1
-            // 
-            this.placeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.placeDataGridViewTextBoxColumn1.DataPropertyName = "Place";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.placeDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.placeDataGridViewTextBoxColumn1.FillWeight = 8F;
-            this.placeDataGridViewTextBoxColumn1.HeaderText = "";
-            this.placeDataGridViewTextBoxColumn1.Name = "placeDataGridViewTextBoxColumn1";
-            this.placeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // resultsBindingSource
-            // 
-            this.resultsBindingSource.DataSource = typeof(WindowsFormsApp1.Results);
-            // 
             // pictureBox8
             // 
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -908,65 +779,6 @@
             this.Place.HeaderText = "Место";
             this.Place.Name = "Place";
             this.Place.Width = 101;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Team";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Team";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Start";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Start";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Tour1";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tour1";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Tour1St";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Tour1St";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Tour2";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tour2";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Tour2St";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tour2St";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Tour3";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Tour3";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Tour3St";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tour3St";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Sum";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Sum";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // scoreBindingSource
-            // 
-            this.scoreBindingSource.DataSource = typeof(WindowsFormsApp1.Score);
-            this.scoreBindingSource.CurrentChanged += new System.EventHandler(this.scoreBindingSource_CurrentChanged);
             // 
             // tabPage6
             // 
@@ -1353,33 +1165,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(574, 163);
             this.panel2.TabIndex = 3;
-            // 
-            // listBox3
-            // 
-            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.listBox3.ItemHeight = 20;
-            this.listBox3.Location = new System.Drawing.Point(536, 0);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(38, 163);
-            this.listBox3.TabIndex = 2;
-            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
-            // 
-            // listBox2
-            // 
-            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(0, 0);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBox2.Size = new System.Drawing.Size(574, 163);
-            this.listBox2.TabIndex = 1;
-            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged_1);
             // 
             // tableLayoutPanel20
             // 
@@ -1947,6 +1732,232 @@
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 500;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Team";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Team";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Start";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Start";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Tour1";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tour1";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Tour1St";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Tour1St";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Tour2";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tour2";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Tour2St";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tour2St";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Tour3";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Tour3";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Tour3St";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tour3St";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Sum";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Sum";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // scoreBindingSource
+            // 
+            this.scoreBindingSource.DataSource = typeof(WindowsFormsApp1.Score);
+            this.scoreBindingSource.CurrentChanged += new System.EventHandler(this.scoreBindingSource_CurrentChanged);
+            // 
+            // myDataGridView1
+            // 
+            this.myDataGridView1.AllowUserToAddRows = false;
+            this.myDataGridView1.AllowUserToDeleteRows = false;
+            this.myDataGridView1.AllowUserToResizeColumns = false;
+            this.myDataGridView1.AllowUserToResizeRows = false;
+            this.myDataGridView1.AutoGenerateColumns = false;
+            this.myDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.myDataGridView1.CausesValidation = false;
+            this.myDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.myDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.myDataGridView1.ColumnHeadersHeight = 60;
+            this.myDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.myDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn10,
+            this.Column2,
+            this.scoreBeforeTourDataGridViewTextBoxColumn1,
+            this.currentTeamScoreDataGridViewTextBoxColumn1,
+            this.currentStalkersScoreDataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn11,
+            this.placeDataGridViewTextBoxColumn1});
+            this.myDataGridView1.DataSource = this.resultsBindingSource;
+            this.myDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.myDataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.myDataGridView1.MultiSelect = false;
+            this.myDataGridView1.Name = "myDataGridView1";
+            this.myDataGridView1.ReadOnly = true;
+            this.myDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.myDataGridView1.RowHeadersVisible = false;
+            this.myDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.tableLayoutPanel12.SetRowSpan(this.myDataGridView1, 2);
+            this.myDataGridView1.RowTemplate.Height = 35;
+            this.myDataGridView1.RowTemplate.ReadOnly = true;
+            this.myDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.myDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.myDataGridView1.Size = new System.Drawing.Size(952, 582);
+            this.myDataGridView1.TabIndex = 0;
+            this.myDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.myDataGridView1_CellContentClick_1);
+            this.myDataGridView1.Click += new System.EventHandler(this.myDataGridView1_Click_2);
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "team";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewTextBoxColumn10.FillWeight = 51F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 2F;
+            this.Column2.HeaderText = "";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // scoreBeforeTourDataGridViewTextBoxColumn1
+            // 
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.DataPropertyName = "ScoreBeforeTour";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle11;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.FillWeight = 9F;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.HeaderText = "";
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.Name = "scoreBeforeTourDataGridViewTextBoxColumn1";
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // currentTeamScoreDataGridViewTextBoxColumn1
+            // 
+            this.currentTeamScoreDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.currentTeamScoreDataGridViewTextBoxColumn1.DataPropertyName = "CurrentTeamScore";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.currentTeamScoreDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle12;
+            this.currentTeamScoreDataGridViewTextBoxColumn1.FillWeight = 8F;
+            this.currentTeamScoreDataGridViewTextBoxColumn1.HeaderText = "";
+            this.currentTeamScoreDataGridViewTextBoxColumn1.Name = "currentTeamScoreDataGridViewTextBoxColumn1";
+            this.currentTeamScoreDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // currentStalkersScoreDataGridViewTextBoxColumn1
+            // 
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.DataPropertyName = "CurrentStalkersScore";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.FillWeight = 8F;
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.HeaderText = "";
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.Name = "currentStalkersScoreDataGridViewTextBoxColumn1";
+            this.currentStalkersScoreDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Sum";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn11.FillWeight = 8F;
+            this.dataGridViewTextBoxColumn11.HeaderText = "";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // placeDataGridViewTextBoxColumn1
+            // 
+            this.placeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.placeDataGridViewTextBoxColumn1.DataPropertyName = "Place";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.placeDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle15;
+            this.placeDataGridViewTextBoxColumn1.FillWeight = 8F;
+            this.placeDataGridViewTextBoxColumn1.HeaderText = "";
+            this.placeDataGridViewTextBoxColumn1.Name = "placeDataGridViewTextBoxColumn1";
+            this.placeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // resultsBindingSource
+            // 
+            this.resultsBindingSource.DataSource = typeof(WindowsFormsApp1.Results);
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(3, 317);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(1116, 262);
+            this.listBox1.TabIndex = 5;
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.listBox3.ItemHeight = 20;
+            this.listBox3.Location = new System.Drawing.Point(536, 0);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(38, 163);
+            this.listBox3.TabIndex = 2;
+            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
+            // 
+            // listBox2
+            // 
+            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox2.ItemHeight = 20;
+            this.listBox2.Location = new System.Drawing.Point(0, 0);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBox2.Size = new System.Drawing.Size(574, 163);
+            this.listBox2.TabIndex = 1;
+            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged_1);
+            // 
             // myListBox1
             // 
             this.myListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -1960,34 +1971,34 @@
             // 
             // myDataGridView2
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.myDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.myDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.myDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.myDataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.myDataGridView2.DefaultCellStyle = dataGridViewCellStyle17;
             this.myDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myDataGridView2.Location = new System.Drawing.Point(0, 0);
             this.myDataGridView2.Name = "myDataGridView2";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.myDataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.myDataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.myDataGridView2.RowTemplate.Height = 24;
             this.myDataGridView2.Size = new System.Drawing.Size(1128, 588);
             this.myDataGridView2.TabIndex = 0;
@@ -2011,11 +2022,6 @@
             this.myListBox3.Name = "myListBox3";
             this.myListBox3.Size = new System.Drawing.Size(85, 84);
             this.myListBox3.TabIndex = 19;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 1000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // GameForm
             // 
@@ -2057,12 +2063,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scoreBindingSource)).EndInit();
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -2096,6 +2099,9 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WMPa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scoreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView2)).EndInit();
             this.ResumeLayout(false);
 
@@ -2247,5 +2253,6 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
     }
 }

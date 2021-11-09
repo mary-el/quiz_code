@@ -146,6 +146,7 @@ namespace WindowsFormsApp1
 
             timer1.Enabled = false;
             timer2.Enabled = false;
+            timer3.Enabled = false;
             qTextBox11.Text = "";
             
             qTextBox11.Rtf = @"{\rtf1\ansi\ansicpg1251 " + q.Text + "}";
@@ -1735,7 +1736,7 @@ namespace WindowsFormsApp1
         }
 
         private void myDataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
+        { /*
             if (resultsBindingSource.Count < results.Count)
             {
                 resultsBindingSource.Insert(0, results[resultsBindingSource.Count]);
@@ -1743,13 +1744,17 @@ namespace WindowsFormsApp1
                 if (results[resultsBindingSource.Count - 1].Place < 4)
                     dataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
                 myDataGridView1.Refresh();
+                timer3.Enabled = true;
             }
+            */
 
         }
 
         private void myDataGridView1_Click_2(object sender, EventArgs e)
         {
 
+            if (timer3.Enabled == true)
+                return;
             if (resultsBindingSource.Count < results.Count)
             {
                 resultsBindingSource.Insert(0, results[resultsBindingSource.Count]);
@@ -1764,6 +1769,7 @@ namespace WindowsFormsApp1
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = TeamsColor;
 
                 myDataGridView1.Refresh();
+                timer3.Enabled = true;
             }
 
         }
@@ -2121,6 +2127,11 @@ namespace WindowsFormsApp1
                 tabControl1.SelectedIndex += 1;
             }
             label29.Text = TimerLeft.ToString();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            timer3.Enabled = false;
         }
     }
 }
