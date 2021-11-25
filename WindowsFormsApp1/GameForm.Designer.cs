@@ -150,6 +150,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.label30 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,6 +177,7 @@
             this.myDataGridView2 = new WindowsFormsApp1.MyDataGridView();
             this.myListBox2 = new WindowsFormsApp1.myListBox();
             this.myListBox3 = new WindowsFormsApp1.myListBox();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -229,6 +231,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView2)).BeginInit();
+            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -730,7 +733,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.dataGridView1);
+            this.tabPage5.Controls.Add(this.tableLayoutPanel14);
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -738,6 +741,8 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Таблица";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
+            this.tabPage5.Enter += new System.EventHandler(this.tabPage5_Enter);
             // 
             // dataGridView1
             // 
@@ -763,7 +768,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 50;
             this.dataGridView1.ShowCellErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1122, 582);
+            this.dataGridView1.Size = new System.Drawing.Size(1116, 546);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -1742,6 +1747,15 @@
             this.timer3.Interval = 500;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(3, 552);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(240, 25);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "Лучший сталкер: ---------";
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Team";
@@ -2023,6 +2037,22 @@
             this.myListBox3.Size = new System.Drawing.Size(85, 84);
             this.myListBox3.TabIndex = 19;
             // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 1;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel14.Controls.Add(this.dataGridView1, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label30, 0, 1);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(1122, 582);
+            this.tableLayoutPanel14.TabIndex = 2;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2103,6 +2133,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView2)).EndInit();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2254,5 +2286,7 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
     }
 }

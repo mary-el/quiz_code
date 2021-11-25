@@ -28,6 +28,12 @@ namespace WindowsFormsApp1
         public List<int[]> ScoresTable { get; set; }
         public List<Score> ScoresFinal { get; set; }
         public string LogFile { get; set; }
+        public int BestStalkerTeam { get; set; }
+        public int BestStalkerTour { get; set; }
+        public int BestStalkerExp { get; set; }
+        public int BestStalkerQ { get; set; }
+        public int BestStalkerValue { get; set; }
+        public string BestStalkerAnswer { get; set; }
         public Game() { }
         public Game(string name) {
             FileName = name;
@@ -41,6 +47,12 @@ namespace WindowsFormsApp1
             ScoresFinal = new List<Score>();
             ScoresTable = new List<int[]>();
             Timer = new int[4];
+            BestStalkerTeam = -1;
+            BestStalkerTour = -1;
+            BestStalkerExp = -1;
+            BestStalkerQ = -1;
+            BestStalkerValue = -1;
+            BestStalkerAnswer = "";
 
         }
         public void Serialize()

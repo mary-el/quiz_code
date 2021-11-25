@@ -81,6 +81,10 @@ namespace WindowsFormsApp1
         public int ExpInTour = 6;
         public int StalkerOrderMethod = 0;
         bool ResultsChanged = false;
+        public int BestStalkerTeam = -1;
+        public int BestStalkerValue = -1;
+        public int BestStalkerQ = -1;
+        public string BestStalkerAnswer = "";
         public void SetPictQ(Image pict)
         {
             if (pict is null)
@@ -288,7 +292,10 @@ namespace WindowsFormsApp1
             }
 
             if (current_tour == 3)
+            {
+                game.Serialize();
                 return;
+            }
             if (current_exp > game.ExpeditionN || game.ExpeditionN == 0)
             {
 
@@ -400,9 +407,22 @@ namespace WindowsFormsApp1
             CalculatePlaces();
             game.Serialize();
 
-            //  dataGridView1.Sort(dataGridView1.Columns[8], ListSortDirection.Descending);
+          if (BestStalkerValue > game.BestStalkerValue)
+            {
+                game.BestStalkerValue = BestStalkerValue;
+                game.BestStalkerExp = current_exp;
+                game.BestStalkerQ = BestStalkerQ;
+                game.BestStalkerTeam = BestStalkerTeam;
+                game.BestStalkerTour = current_tour;
+                game.BestStalkerAnswer = BestStalkerAnswer;
+            }
+          BestStalkerTeam = -1;
+          BestStalkerValue = -1;
+          BestStalkerQ = -1;
+          BestStalkerAnswer = "";
+        //  dataGridView1.Sort(dataGridView1.Columns[8], ListSortDirection.Descending);
 
-        }
+    }
         public void NextTour(int step)
         {
             current_tour += step;
@@ -1113,11 +1133,19 @@ namespace WindowsFormsApp1
                 }
                 int cost = costsTable[tag];
                 if (IndTour)
+                {
                     AddScore(PlayingStalkerNum, cost);
+                    if (cost > BestStalkerValue)
+                    {
+                        BestStalkerValue = cost;
+                        BestStalkerQ = tag;
+                        BestStalkerTeam = team;
+                        BestStalkerAnswer = q.Answer;
+                    }
+                }
                 else
                     for (int i = 0; i < game.Stalkers; i++)
                         AddScore(i, cost);
-                
                 CalculatePlaces();
                 try
                 {
@@ -1356,6 +1384,10 @@ namespace WindowsFormsApp1
             CalculatePlaces();
             PlayingStalkerNum = 0;
             SetPlayer(PlayingStalkerNum);
+            BestStalkerAnswer = "";
+            BestStalkerQ = -1;
+            BestStalkerTeam = -1;
+            BestStalkerValue = -1;
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -2132,6 +2164,19 @@ namespace WindowsFormsApp1
         private void timer3_Tick(object sender, EventArgs e)
         {
             timer3.Enabled = false;
+        }
+
+        private void tabPage5_Enter(object sender, EventArgs e)
+        {
+            if (game.BestStalkerValue > 0)
+            {
+                label30.Text = "Лучший сталкер: " + game.Teams[game.BestStalkerTeam].Name + " " + game.BestStalkerValue.ToString() + " (" + game.BestStalkerAnswer + ")";
+            }
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
