@@ -141,6 +141,7 @@ namespace WindowsFormsApp1
 
             timer1.Enabled = false;
             timer2.Enabled = false;
+            timer3.Enabled = false;
             qTextBox11.Text = "";
             
             qTextBox11.Rtf = @"{\rtf1\ansi\ansicpg1251 " + q.Text + "}";
@@ -942,7 +943,28 @@ namespace WindowsFormsApp1
                 SetDoubleBuffered(tableLayoutPanel4);
                 SetDoubleBuffered(tableLayoutPanel5);
                 SetDoubleBuffered(tableLayoutPanel12);
+                SetDoubleBuffered(tableLayoutPanel6);
+                SetDoubleBuffered(tableLayoutPanel7);
+                SetDoubleBuffered(tableLayoutPanel8);
+                SetDoubleBuffered(tableLayoutPanel9);
+                SetDoubleBuffered(tableLayoutPanel10);
+                SetDoubleBuffered(tableLayoutPanel11);
+                SetDoubleBuffered(tableLayoutPanel16);
                 SetDoubleBuffered(YesPlace);
+                SetDoubleBuffered(tableLayoutPanel13);
+                SetDoubleBuffered(tableLayoutPanel15);
+                SetDoubleBuffered(flowLayoutPanel1);
+                SetDoubleBuffered(flowLayoutPanel2);
+                SetDoubleBuffered(flowLayoutPanel3);
+                SetDoubleBuffered(flowLayoutPanel4);
+                SetDoubleBuffered(flowLayoutPanel5);
+                SetDoubleBuffered(flowLayoutPanel6);
+                SetDoubleBuffered(flowLayoutPanel7);
+                SetDoubleBuffered(tableLayoutPanel18);
+                SetDoubleBuffered(myDataGridView1);
+                SetDoubleBuffered(label5);
+                SetDoubleBuffered(label1);
+                SetDoubleBuffered(label14);
 
 
             foreach (Score s in ScoreList)
@@ -1359,10 +1381,8 @@ namespace WindowsFormsApp1
         }
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {
-            if (System.Windows.Forms.SystemInformation.TerminalServerSession)
-                return;
-            System.Reflection.PropertyInfo aProp = typeof(System.Windows.Forms.Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            aProp.SetValue(c, true, null);
+            typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty).SetValue(c, true, null);
+
         }
         protected override CreateParams CreateParams
         {
@@ -1873,19 +1893,13 @@ namespace WindowsFormsApp1
 
         private void myDataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (resultsBindingSource.Count < results.Count)
-            {
-                resultsBindingSource.Insert(0, results[resultsBindingSource.Count]);
-
-                if (results[resultsBindingSource.Count - 1].Place < 4)
-                    dataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
-                myDataGridView1.Refresh();
-            }
 
         }
 
         private void myDataGridView1_Click_2(object sender, EventArgs e)
         {
+            if (timer3.Enabled == true)
+                return;
             if (ResultsChanged == true)
             {
                 GetResults();
@@ -1915,6 +1929,8 @@ namespace WindowsFormsApp1
                 }
 
                 myDataGridView1.Refresh();
+
+                timer3.Enabled = true;
             }
 
         }
@@ -2297,6 +2313,12 @@ namespace WindowsFormsApp1
         private void listBox5_Click(object sender, EventArgs e)
         {
             CancelAnsw(false);
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+
+            timer3.Enabled = false;
         }
     }
 }
