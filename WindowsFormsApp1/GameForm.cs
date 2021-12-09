@@ -291,6 +291,20 @@ namespace WindowsFormsApp1
                     ArrayA[i, q - 1]++;
             }
 
+            if (BestStalkerValue > game.BestStalkerValue)
+            {
+                game.BestStalkerValue = BestStalkerValue;
+                game.BestStalkerExp = current_exp;
+                game.BestStalkerQ = BestStalkerQ;
+                game.BestStalkerTeam = BestStalkerTeam;
+                game.BestStalkerTour = current_tour;
+                game.BestStalkerAnswer = BestStalkerAnswer;
+            }
+            BestStalkerTeam = -1;
+            BestStalkerValue = -1;
+            BestStalkerQ = -1;
+            BestStalkerAnswer = "";
+
             if (current_tour == 3)
             {
                 game.Serialize();
@@ -406,20 +420,6 @@ namespace WindowsFormsApp1
             }
             CalculatePlaces();
             game.Serialize();
-
-          if (BestStalkerValue > game.BestStalkerValue)
-            {
-                game.BestStalkerValue = BestStalkerValue;
-                game.BestStalkerExp = current_exp;
-                game.BestStalkerQ = BestStalkerQ;
-                game.BestStalkerTeam = BestStalkerTeam;
-                game.BestStalkerTour = current_tour;
-                game.BestStalkerAnswer = BestStalkerAnswer;
-            }
-          BestStalkerTeam = -1;
-          BestStalkerValue = -1;
-          BestStalkerQ = -1;
-          BestStalkerAnswer = "";
         //  dataGridView1.Sort(dataGridView1.Columns[8], ListSortDirection.Descending);
 
     }
