@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public bool Plays1 { get; set; }
         public bool Plays2 { get; set; }
         public string Short { get; set; }
+        public bool Running { get; set; }
         override public string  ToString()
         {
             string text = $"{Name} ({Short}) №{Number} Группа {Group} ";

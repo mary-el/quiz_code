@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
     {
         public int TeamN { get; set; }
         public int Place { get; set; }
+        public int RealPlace { get; set; }
         public int PrevPlace { get; set; }
         public string Team { get; set; }
         public int Start { get; set; }
@@ -281,6 +282,8 @@ namespace WindowsFormsApp1
     public class Results
     {
         public int Place { get; set; }
+        public string ShowPlaceStr { get; set; }
+        public int ShowPlace { get; set; }
         public string team { get; set; }
         public int ScoreBeforeTour { get; set; }
         public int CurrentTeamScore { get; set; }

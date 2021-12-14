@@ -526,6 +526,7 @@ namespace WindowsFormsApp1
                 game.StalkersDelegated[current_tour][current_exp][(int)but.Tag] *= -1;
                 SetButtonsColours();
                 ResetStalkers();
+                CancelAnsw(false);
             }
         }
 
@@ -659,9 +660,20 @@ namespace WindowsFormsApp1
         public void CalculatePlaces()
         {
             ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenByDescending(u => u.RoundsFull[11]).ThenByDescending(u => u.RoundsFull[10]).ThenByDescending(u => u.RoundsFull[9]).ThenByDescending(u => u.RoundsFull[8]).ThenByDescending(u => u.RoundsFull[7]).ThenByDescending(u => u.RoundsFull[6]).ThenByDescending(u => u.RoundsFull[5]).ThenByDescending(u => u.RoundsFull[4]).ThenByDescending(u => u.RoundsFull[3]).ThenByDescending(u => u.RoundsFull[2]).ThenByDescending(u => u.RoundsFull[1]).ThenByDescending(u => u.RoundsFull[0]).ToList(); // !!!!!!!!!!1
+            int show_place = 1;
             for (int i = 0; i < ScoreList.Count; i++)
             {
-                ScoreList[i].Place = i + 1;
+                ScoreList[i].RealPlace = i + 1;
+                if (game.Teams[ScoreList[i].TeamN].Running == false)
+                {
+                    ScoreList[i].Place = show_place;
+                    show_place += 1;
+                }
+                else
+                {
+                    ScoreList[i].Place = -1;
+                }
+
             }
             ScoreList = ScoreList.OrderBy(u => u.TeamN).ToList();
             dataGridView1.Refresh();
@@ -692,7 +704,12 @@ namespace WindowsFormsApp1
 
         private void SetButtonsSizes()
         {
-            int TeamN = game.Teams.Count;
+            int TeamN = 0;
+            foreach (Score s in ScoreList)
+            {
+                if (s.Invisible == false)
+                    TeamN += 1;
+            }
             int teamb_w = flowLayoutPanel1.Width / Math.Min(4, TeamN) - 10;
             int teamb_h = flowLayoutPanel1.Height / (int)Math.Ceiling((double)TeamN / 4) - 10;
             foreach (Button but in teamb)
@@ -855,8 +872,8 @@ namespace WindowsFormsApp1
 
             buttons = new Button[] { button1, button2, button3, button4 };
             costs = new Label[] { label4, label17, label18, label19 };
-            foreach (Label c in costs)
-                c.Click += new EventHandler(CostLabelClick);
+            // foreach (Label c in costs)
+            //    c.Click += new EventHandler(CostLabelClick);
             helps = new Label[] { label20, label21, label22, label23 };
             costsTable = new int[4];
             results = new List<Results>();
@@ -1315,10 +1332,22 @@ namespace WindowsFormsApp1
             int LastTour = Math.Max((current_exp > 0 ? game.TourN : game.TourN - 1), 0);
             ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenByDescending(u => u.RoundsFull[11]).ThenByDescending(u => u.RoundsFull[10]).ThenByDescending(u => u.RoundsFull[9]).ThenByDescending(u => u.RoundsFull[8]).ThenByDescending(u => u.RoundsFull[7]).ThenByDescending(u => u.RoundsFull[6]).ThenByDescending(u => u.RoundsFull[5]).ThenByDescending(u => u.RoundsFull[4]).ThenByDescending(u => u.RoundsFull[3]).ThenByDescending(u => u.RoundsFull[2]).ThenByDescending(u => u.RoundsFull[1]).ThenByDescending(u => u.RoundsFull[0]).ToList();
             int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
+            int show_place = 1;
             for (int i = 0; i < VisibleTeams; i++)
             {       
                 Results res = new Results();
                 res.Place = i + 1; // ScoreList[i].Place;
+                if (game.Teams[ScoreList[i].TeamN].Running == true)
+                {
+                    res.ShowPlaceStr = " ";
+                    res.ShowPlace = -1;
+                }
+                else
+                {
+                    res.ShowPlaceStr = show_place.ToString();
+                    res.ShowPlace = show_place;
+                    show_place += 1;
+                }
                 res.team = ScoreList[i].Team;
                 res.ScoreBeforeTour = ScoreList[i].Start;
                 for (int j = 0; j < LastTour; j++)
@@ -1909,8 +1938,8 @@ namespace WindowsFormsApp1
             if (resultsBindingSource.Count < results.Count)
             {
                 resultsBindingSource.Insert(0, results[resultsBindingSource.Count]);
-                int place = results[resultsBindingSource.Count - 1].Place;
-                if (place < 4)
+                int place = results[resultsBindingSource.Count - 1].ShowPlace;
+                if ((place < 4) && (place > 0))
                 {
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
                     if (place == 1)
@@ -2069,13 +2098,14 @@ namespace WindowsFormsApp1
 
         private void tableLayoutPanel20_Click(object sender, EventArgs e)
         {
+            /*
             Point p = tableLayoutPanel20.PointToClient(Cursor.Position);
             int[] widths = tableLayoutPanel20.GetColumnWidths();
             if (p.X < widths[0] + widths[1] + widths[2])
             {
                 WrongAnswer();
             }
-
+            */
         }
 
         private void pictureBox10_Click_1(object sender, EventArgs e)
@@ -2295,6 +2325,8 @@ namespace WindowsFormsApp1
         {
             if (answered_count == -1)
                 return;
+            if (answers_to_complete_mission == answered_count)
+                return;
             WrongAnswer();
 
         }
@@ -2319,6 +2351,11 @@ namespace WindowsFormsApp1
         {
 
             timer3.Enabled = false;
+        }
+
+        private void resultsBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

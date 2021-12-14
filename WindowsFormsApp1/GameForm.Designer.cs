@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.placeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,47 +80,10 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.myDataGridView1 = new WindowsFormsApp1.MyDataGridView();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.scoreBeforeTourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Round1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Round2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Round3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Round4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Place = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tour11DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St11 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour12DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St12 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour13DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour14DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St14 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour21DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St21 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour22DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St22 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour23DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St23 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour24DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St24 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour31DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St31 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour32DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St32 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour33DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St33 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tour34DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.St34 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.scoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -199,6 +162,43 @@
             this.myListBox2 = new WindowsFormsApp1.myListBox();
             this.myListBox3 = new WindowsFormsApp1.myListBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.scoreBeforeTourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Round1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Round2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Round3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Round4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Place = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tour11DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St11 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour12DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St12 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour13DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour14DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St14 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour21DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St21 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour22DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St22 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour23DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St23 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour24DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St24 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour31DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St31 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour32DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St32 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour33DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St33 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tour34DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.St34 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -774,107 +774,16 @@
             this.myDataGridView1.RowTemplate.Height = 35;
             this.myDataGridView1.RowTemplate.ReadOnly = true;
             this.myDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.myDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.myDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.myDataGridView1.Size = new System.Drawing.Size(952, 582);
             this.myDataGridView1.TabIndex = 0;
             this.myDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.myDataGridView1_CellContentClick_1);
             this.myDataGridView1.Click += new System.EventHandler(this.myDataGridView1_Click_2);
             // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "team";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewTextBoxColumn10.FillWeight = 51F;
-            this.dataGridViewTextBoxColumn10.HeaderText = "";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 2F;
-            this.Column2.HeaderText = "";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // scoreBeforeTourDataGridViewTextBoxColumn1
-            // 
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.DataPropertyName = "ScoreBeforeTour";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.FillWeight = 9F;
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.HeaderText = "";
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.Name = "scoreBeforeTourDataGridViewTextBoxColumn1";
-            this.scoreBeforeTourDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Round1
-            // 
-            this.Round1.DataPropertyName = "Round1";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Round1.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Round1.FillWeight = 9F;
-            this.Round1.HeaderText = "";
-            this.Round1.Name = "Round1";
-            this.Round1.ReadOnly = true;
-            // 
-            // Round2
-            // 
-            this.Round2.DataPropertyName = "Round2";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Round2.DefaultCellStyle = dataGridViewCellStyle15;
-            this.Round2.FillWeight = 9F;
-            this.Round2.HeaderText = "";
-            this.Round2.Name = "Round2";
-            this.Round2.ReadOnly = true;
-            // 
-            // Round3
-            // 
-            this.Round3.DataPropertyName = "Round3";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Round3.DefaultCellStyle = dataGridViewCellStyle16;
-            this.Round3.FillWeight = 9F;
-            this.Round3.HeaderText = "";
-            this.Round3.Name = "Round3";
-            this.Round3.ReadOnly = true;
-            // 
-            // Round4
-            // 
-            this.Round4.DataPropertyName = "Round4";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Round4.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Round4.FillWeight = 9F;
-            this.Round4.HeaderText = "";
-            this.Round4.Name = "Round4";
-            this.Round4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Sum";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridViewTextBoxColumn11.FillWeight = 8F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // placeDataGridViewTextBoxColumn1
-            // 
-            this.placeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.placeDataGridViewTextBoxColumn1.DataPropertyName = "Place";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.placeDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle19;
-            this.placeDataGridViewTextBoxColumn1.FillWeight = 8F;
-            this.placeDataGridViewTextBoxColumn1.HeaderText = "";
-            this.placeDataGridViewTextBoxColumn1.Name = "placeDataGridViewTextBoxColumn1";
-            this.placeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // resultsBindingSource
             // 
             this.resultsBindingSource.DataSource = typeof(WindowsFormsApp1.Results);
+            this.resultsBindingSource.CurrentChanged += new System.EventHandler(this.resultsBindingSource_CurrentChanged);
             // 
             // pictureBox8
             // 
@@ -950,203 +859,6 @@
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             this.dataGridView1.Validating += new System.ComponentModel.CancelEventHandler(this.dataGridView1_Validating);
-            // 
-            // Place
-            // 
-            this.Place.DataPropertyName = "Place";
-            this.Place.FillWeight = 75F;
-            this.Place.HeaderText = "Место";
-            this.Place.Name = "Place";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Team";
-            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Team";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 20;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Start";
-            this.dataGridViewTextBoxColumn2.FillWeight = 97.8229F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Start";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // tour11DataGridViewTextBoxColumn
-            // 
-            this.tour11DataGridViewTextBoxColumn.DataPropertyName = "Tour11";
-            this.tour11DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour11DataGridViewTextBoxColumn.HeaderText = "Tour11";
-            this.tour11DataGridViewTextBoxColumn.Name = "tour11DataGridViewTextBoxColumn";
-            // 
-            // St11
-            // 
-            this.St11.DataPropertyName = "St11";
-            this.St11.FillWeight = 97.8229F;
-            this.St11.HeaderText = "St11";
-            this.St11.Name = "St11";
-            // 
-            // tour12DataGridViewTextBoxColumn
-            // 
-            this.tour12DataGridViewTextBoxColumn.DataPropertyName = "Tour12";
-            this.tour12DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour12DataGridViewTextBoxColumn.HeaderText = "Tour12";
-            this.tour12DataGridViewTextBoxColumn.Name = "tour12DataGridViewTextBoxColumn";
-            // 
-            // St12
-            // 
-            this.St12.DataPropertyName = "St12";
-            this.St12.FillWeight = 97.8229F;
-            this.St12.HeaderText = "St12";
-            this.St12.Name = "St12";
-            // 
-            // tour13DataGridViewTextBoxColumn
-            // 
-            this.tour13DataGridViewTextBoxColumn.DataPropertyName = "Tour13";
-            this.tour13DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour13DataGridViewTextBoxColumn.HeaderText = "Tour13";
-            this.tour13DataGridViewTextBoxColumn.Name = "tour13DataGridViewTextBoxColumn";
-            // 
-            // St13
-            // 
-            this.St13.DataPropertyName = "St13";
-            this.St13.FillWeight = 97.8229F;
-            this.St13.HeaderText = "St13";
-            this.St13.Name = "St13";
-            // 
-            // tour14DataGridViewTextBoxColumn
-            // 
-            this.tour14DataGridViewTextBoxColumn.DataPropertyName = "Tour14";
-            this.tour14DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour14DataGridViewTextBoxColumn.HeaderText = "Tour14";
-            this.tour14DataGridViewTextBoxColumn.Name = "tour14DataGridViewTextBoxColumn";
-            // 
-            // St14
-            // 
-            this.St14.DataPropertyName = "St14";
-            this.St14.FillWeight = 97.8229F;
-            this.St14.HeaderText = "St14";
-            this.St14.Name = "St14";
-            // 
-            // tour21DataGridViewTextBoxColumn
-            // 
-            this.tour21DataGridViewTextBoxColumn.DataPropertyName = "Tour21";
-            this.tour21DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour21DataGridViewTextBoxColumn.HeaderText = "Tour21";
-            this.tour21DataGridViewTextBoxColumn.Name = "tour21DataGridViewTextBoxColumn";
-            // 
-            // St21
-            // 
-            this.St21.DataPropertyName = "St21";
-            this.St21.FillWeight = 97.8229F;
-            this.St21.HeaderText = "St21";
-            this.St21.Name = "St21";
-            // 
-            // tour22DataGridViewTextBoxColumn
-            // 
-            this.tour22DataGridViewTextBoxColumn.DataPropertyName = "Tour22";
-            this.tour22DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour22DataGridViewTextBoxColumn.HeaderText = "Tour22";
-            this.tour22DataGridViewTextBoxColumn.Name = "tour22DataGridViewTextBoxColumn";
-            // 
-            // St22
-            // 
-            this.St22.DataPropertyName = "St22";
-            this.St22.FillWeight = 97.8229F;
-            this.St22.HeaderText = "St22";
-            this.St22.Name = "St22";
-            // 
-            // tour23DataGridViewTextBoxColumn
-            // 
-            this.tour23DataGridViewTextBoxColumn.DataPropertyName = "Tour23";
-            this.tour23DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour23DataGridViewTextBoxColumn.HeaderText = "Tour23";
-            this.tour23DataGridViewTextBoxColumn.Name = "tour23DataGridViewTextBoxColumn";
-            // 
-            // St23
-            // 
-            this.St23.DataPropertyName = "St23";
-            this.St23.FillWeight = 97.8229F;
-            this.St23.HeaderText = "St23";
-            this.St23.Name = "St23";
-            // 
-            // tour24DataGridViewTextBoxColumn
-            // 
-            this.tour24DataGridViewTextBoxColumn.DataPropertyName = "Tour24";
-            this.tour24DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour24DataGridViewTextBoxColumn.HeaderText = "Tour24";
-            this.tour24DataGridViewTextBoxColumn.Name = "tour24DataGridViewTextBoxColumn";
-            // 
-            // St24
-            // 
-            this.St24.DataPropertyName = "St24";
-            this.St24.FillWeight = 97.8229F;
-            this.St24.HeaderText = "St24";
-            this.St24.Name = "St24";
-            // 
-            // tour31DataGridViewTextBoxColumn
-            // 
-            this.tour31DataGridViewTextBoxColumn.DataPropertyName = "Tour31";
-            this.tour31DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour31DataGridViewTextBoxColumn.HeaderText = "Tour31";
-            this.tour31DataGridViewTextBoxColumn.Name = "tour31DataGridViewTextBoxColumn";
-            // 
-            // St31
-            // 
-            this.St31.DataPropertyName = "St31";
-            this.St31.FillWeight = 97.8229F;
-            this.St31.HeaderText = "St31";
-            this.St31.Name = "St31";
-            // 
-            // tour32DataGridViewTextBoxColumn
-            // 
-            this.tour32DataGridViewTextBoxColumn.DataPropertyName = "Tour32";
-            this.tour32DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour32DataGridViewTextBoxColumn.HeaderText = "Tour32";
-            this.tour32DataGridViewTextBoxColumn.Name = "tour32DataGridViewTextBoxColumn";
-            // 
-            // St32
-            // 
-            this.St32.DataPropertyName = "St32";
-            this.St32.FillWeight = 97.8229F;
-            this.St32.HeaderText = "St32";
-            this.St32.Name = "St32";
-            // 
-            // tour33DataGridViewTextBoxColumn
-            // 
-            this.tour33DataGridViewTextBoxColumn.DataPropertyName = "Tour33";
-            this.tour33DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour33DataGridViewTextBoxColumn.HeaderText = "Tour33";
-            this.tour33DataGridViewTextBoxColumn.Name = "tour33DataGridViewTextBoxColumn";
-            // 
-            // St33
-            // 
-            this.St33.DataPropertyName = "St33";
-            this.St33.FillWeight = 97.8229F;
-            this.St33.HeaderText = "St33";
-            this.St33.Name = "St33";
-            // 
-            // tour34DataGridViewTextBoxColumn
-            // 
-            this.tour34DataGridViewTextBoxColumn.DataPropertyName = "Tour34";
-            this.tour34DataGridViewTextBoxColumn.FillWeight = 97.8229F;
-            this.tour34DataGridViewTextBoxColumn.HeaderText = "Tour34";
-            this.tour34DataGridViewTextBoxColumn.Name = "tour34DataGridViewTextBoxColumn";
-            // 
-            // St34
-            // 
-            this.St34.DataPropertyName = "St34";
-            this.St34.FillWeight = 97.8229F;
-            this.St34.HeaderText = "St34";
-            this.St34.Name = "St34";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Sum";
-            this.dataGridViewTextBoxColumn9.FillWeight = 97.8229F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Sum";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
             // scoreBindingSource
             // 
@@ -2179,34 +1891,34 @@
             // 
             // myDataGridView2
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.myDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.myDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
             this.myDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.myDataGridView2.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.myDataGridView2.DefaultCellStyle = dataGridViewCellStyle54;
             this.myDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myDataGridView2.Location = new System.Drawing.Point(0, 0);
             this.myDataGridView2.Name = "myDataGridView2";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.myDataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.myDataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle55;
             this.myDataGridView2.RowTemplate.Height = 24;
             this.myDataGridView2.Size = new System.Drawing.Size(1128, 588);
             this.myDataGridView2.TabIndex = 0;
@@ -2234,6 +1946,295 @@
             // timer3
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "team";
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle45;
+            this.dataGridViewTextBoxColumn10.FillWeight = 51F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 2F;
+            this.Column2.HeaderText = "";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // scoreBeforeTourDataGridViewTextBoxColumn1
+            // 
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.DataPropertyName = "ScoreBeforeTour";
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle46;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.FillWeight = 9F;
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.HeaderText = "";
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.Name = "scoreBeforeTourDataGridViewTextBoxColumn1";
+            this.scoreBeforeTourDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Round1
+            // 
+            this.Round1.DataPropertyName = "Round1";
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Round1.DefaultCellStyle = dataGridViewCellStyle47;
+            this.Round1.FillWeight = 9F;
+            this.Round1.HeaderText = "";
+            this.Round1.Name = "Round1";
+            this.Round1.ReadOnly = true;
+            // 
+            // Round2
+            // 
+            this.Round2.DataPropertyName = "Round2";
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Round2.DefaultCellStyle = dataGridViewCellStyle48;
+            this.Round2.FillWeight = 9F;
+            this.Round2.HeaderText = "";
+            this.Round2.Name = "Round2";
+            this.Round2.ReadOnly = true;
+            // 
+            // Round3
+            // 
+            this.Round3.DataPropertyName = "Round3";
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Round3.DefaultCellStyle = dataGridViewCellStyle49;
+            this.Round3.FillWeight = 9F;
+            this.Round3.HeaderText = "";
+            this.Round3.Name = "Round3";
+            this.Round3.ReadOnly = true;
+            // 
+            // Round4
+            // 
+            this.Round4.DataPropertyName = "Round4";
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Round4.DefaultCellStyle = dataGridViewCellStyle50;
+            this.Round4.FillWeight = 9F;
+            this.Round4.HeaderText = "";
+            this.Round4.Name = "Round4";
+            this.Round4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Sum";
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle51;
+            this.dataGridViewTextBoxColumn11.FillWeight = 8F;
+            this.dataGridViewTextBoxColumn11.HeaderText = "";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // placeDataGridViewTextBoxColumn1
+            // 
+            this.placeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.placeDataGridViewTextBoxColumn1.DataPropertyName = "ShowPlaceStr";
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.placeDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle52;
+            this.placeDataGridViewTextBoxColumn1.FillWeight = 8F;
+            this.placeDataGridViewTextBoxColumn1.HeaderText = "";
+            this.placeDataGridViewTextBoxColumn1.Name = "placeDataGridViewTextBoxColumn1";
+            this.placeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Place
+            // 
+            this.Place.DataPropertyName = "Place";
+            this.Place.FillWeight = 75F;
+            this.Place.HeaderText = "Место";
+            this.Place.Name = "Place";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Team";
+            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Team";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 20;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Start";
+            this.dataGridViewTextBoxColumn2.FillWeight = 97.8229F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Start";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // tour11DataGridViewTextBoxColumn
+            // 
+            this.tour11DataGridViewTextBoxColumn.DataPropertyName = "Tour11";
+            this.tour11DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour11DataGridViewTextBoxColumn.HeaderText = "Tour11";
+            this.tour11DataGridViewTextBoxColumn.Name = "tour11DataGridViewTextBoxColumn";
+            // 
+            // St11
+            // 
+            this.St11.DataPropertyName = "St11";
+            this.St11.FillWeight = 97.8229F;
+            this.St11.HeaderText = "St11";
+            this.St11.Name = "St11";
+            // 
+            // tour12DataGridViewTextBoxColumn
+            // 
+            this.tour12DataGridViewTextBoxColumn.DataPropertyName = "Tour12";
+            this.tour12DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour12DataGridViewTextBoxColumn.HeaderText = "Tour12";
+            this.tour12DataGridViewTextBoxColumn.Name = "tour12DataGridViewTextBoxColumn";
+            // 
+            // St12
+            // 
+            this.St12.DataPropertyName = "St12";
+            this.St12.FillWeight = 97.8229F;
+            this.St12.HeaderText = "St12";
+            this.St12.Name = "St12";
+            // 
+            // tour13DataGridViewTextBoxColumn
+            // 
+            this.tour13DataGridViewTextBoxColumn.DataPropertyName = "Tour13";
+            this.tour13DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour13DataGridViewTextBoxColumn.HeaderText = "Tour13";
+            this.tour13DataGridViewTextBoxColumn.Name = "tour13DataGridViewTextBoxColumn";
+            // 
+            // St13
+            // 
+            this.St13.DataPropertyName = "St13";
+            this.St13.FillWeight = 97.8229F;
+            this.St13.HeaderText = "St13";
+            this.St13.Name = "St13";
+            // 
+            // tour14DataGridViewTextBoxColumn
+            // 
+            this.tour14DataGridViewTextBoxColumn.DataPropertyName = "Tour14";
+            this.tour14DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour14DataGridViewTextBoxColumn.HeaderText = "Tour14";
+            this.tour14DataGridViewTextBoxColumn.Name = "tour14DataGridViewTextBoxColumn";
+            // 
+            // St14
+            // 
+            this.St14.DataPropertyName = "St14";
+            this.St14.FillWeight = 97.8229F;
+            this.St14.HeaderText = "St14";
+            this.St14.Name = "St14";
+            // 
+            // tour21DataGridViewTextBoxColumn
+            // 
+            this.tour21DataGridViewTextBoxColumn.DataPropertyName = "Tour21";
+            this.tour21DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour21DataGridViewTextBoxColumn.HeaderText = "Tour21";
+            this.tour21DataGridViewTextBoxColumn.Name = "tour21DataGridViewTextBoxColumn";
+            // 
+            // St21
+            // 
+            this.St21.DataPropertyName = "St21";
+            this.St21.FillWeight = 97.8229F;
+            this.St21.HeaderText = "St21";
+            this.St21.Name = "St21";
+            // 
+            // tour22DataGridViewTextBoxColumn
+            // 
+            this.tour22DataGridViewTextBoxColumn.DataPropertyName = "Tour22";
+            this.tour22DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour22DataGridViewTextBoxColumn.HeaderText = "Tour22";
+            this.tour22DataGridViewTextBoxColumn.Name = "tour22DataGridViewTextBoxColumn";
+            // 
+            // St22
+            // 
+            this.St22.DataPropertyName = "St22";
+            this.St22.FillWeight = 97.8229F;
+            this.St22.HeaderText = "St22";
+            this.St22.Name = "St22";
+            // 
+            // tour23DataGridViewTextBoxColumn
+            // 
+            this.tour23DataGridViewTextBoxColumn.DataPropertyName = "Tour23";
+            this.tour23DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour23DataGridViewTextBoxColumn.HeaderText = "Tour23";
+            this.tour23DataGridViewTextBoxColumn.Name = "tour23DataGridViewTextBoxColumn";
+            // 
+            // St23
+            // 
+            this.St23.DataPropertyName = "St23";
+            this.St23.FillWeight = 97.8229F;
+            this.St23.HeaderText = "St23";
+            this.St23.Name = "St23";
+            // 
+            // tour24DataGridViewTextBoxColumn
+            // 
+            this.tour24DataGridViewTextBoxColumn.DataPropertyName = "Tour24";
+            this.tour24DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour24DataGridViewTextBoxColumn.HeaderText = "Tour24";
+            this.tour24DataGridViewTextBoxColumn.Name = "tour24DataGridViewTextBoxColumn";
+            // 
+            // St24
+            // 
+            this.St24.DataPropertyName = "St24";
+            this.St24.FillWeight = 97.8229F;
+            this.St24.HeaderText = "St24";
+            this.St24.Name = "St24";
+            // 
+            // tour31DataGridViewTextBoxColumn
+            // 
+            this.tour31DataGridViewTextBoxColumn.DataPropertyName = "Tour31";
+            this.tour31DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour31DataGridViewTextBoxColumn.HeaderText = "Tour31";
+            this.tour31DataGridViewTextBoxColumn.Name = "tour31DataGridViewTextBoxColumn";
+            // 
+            // St31
+            // 
+            this.St31.DataPropertyName = "St31";
+            this.St31.FillWeight = 97.8229F;
+            this.St31.HeaderText = "St31";
+            this.St31.Name = "St31";
+            // 
+            // tour32DataGridViewTextBoxColumn
+            // 
+            this.tour32DataGridViewTextBoxColumn.DataPropertyName = "Tour32";
+            this.tour32DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour32DataGridViewTextBoxColumn.HeaderText = "Tour32";
+            this.tour32DataGridViewTextBoxColumn.Name = "tour32DataGridViewTextBoxColumn";
+            // 
+            // St32
+            // 
+            this.St32.DataPropertyName = "St32";
+            this.St32.FillWeight = 97.8229F;
+            this.St32.HeaderText = "St32";
+            this.St32.Name = "St32";
+            // 
+            // tour33DataGridViewTextBoxColumn
+            // 
+            this.tour33DataGridViewTextBoxColumn.DataPropertyName = "Tour33";
+            this.tour33DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour33DataGridViewTextBoxColumn.HeaderText = "Tour33";
+            this.tour33DataGridViewTextBoxColumn.Name = "tour33DataGridViewTextBoxColumn";
+            // 
+            // St33
+            // 
+            this.St33.DataPropertyName = "St33";
+            this.St33.FillWeight = 97.8229F;
+            this.St33.HeaderText = "St33";
+            this.St33.Name = "St33";
+            // 
+            // tour34DataGridViewTextBoxColumn
+            // 
+            this.tour34DataGridViewTextBoxColumn.DataPropertyName = "Tour34";
+            this.tour34DataGridViewTextBoxColumn.FillWeight = 97.8229F;
+            this.tour34DataGridViewTextBoxColumn.HeaderText = "Tour34";
+            this.tour34DataGridViewTextBoxColumn.Name = "tour34DataGridViewTextBoxColumn";
+            // 
+            // St34
+            // 
+            this.St34.DataPropertyName = "St34";
+            this.St34.FillWeight = 97.8229F;
+            this.St34.HeaderText = "St34";
+            this.St34.Name = "St34";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Sum";
+            this.dataGridViewTextBoxColumn9.FillWeight = 97.8229F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Sum";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
             // GameForm
             // 
@@ -2452,6 +2453,16 @@
         private myListBox listBox3;
         private myListBox listBox5;
         private myListBox listBox4;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn scoreBeforeTourDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Round1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Round2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Round3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Round4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Place;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -2480,15 +2491,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tour34DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn St34;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn scoreBeforeTourDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Round1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Round2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Round3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Round4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn placeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.Timer timer3;
     }
 }
