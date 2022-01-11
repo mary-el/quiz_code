@@ -11,6 +11,9 @@ using System.Windows.Forms.Integration;
 using System.Text;
 using System.Globalization;
 using System.Diagnostics;
+using System.Xml.Serialization;
+using System.Xml.Schema;
+using System.Xml;
 
 namespace WindowsFormsApp1
 {
@@ -2354,6 +2357,63 @@ namespace WindowsFormsApp1
         }
 
         private void resultsBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_3(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                    return;
+
+
+                XmlSerializer formatter = new XmlSerializer(typeof(List<Score>));
+                using (FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create))
+                {
+                    formatter.Serialize(fs, ScoreList);
+                }
+            }
+            catch
+            {
+                ShowMessage("Ошибка при сохранении");
+            }
+        }
+        
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                    return;
+
+                var formatter = new XmlSerializer(typeof(List<Score>));
+
+                using (FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open))
+                {
+                    ScoreList = (List<Score>)formatter.Deserialize(fs);
+
+                    foreach (Score s in ScoreList)
+                    {
+                        s.RecountSum();
+                    }
+                    scoreBindingSource.DataSource = ScoreList;
+
+                    CalculatePlaces();
+                    game.ScoresFinal = ScoreList;
+                    game.Serialize();
+                    ResultsChanged = true;
+                }
+            }
+            catch
+            {
+                ShowMessage("Ошибка при загрузке файла");
+            }
+        }
+
+        private void tableLayoutPanel21_Paint(object sender, PaintEventArgs e)
         {
 
         }

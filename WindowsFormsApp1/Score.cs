@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApp1
 {
@@ -45,6 +47,16 @@ namespace WindowsFormsApp1
             }
         }
 
+        public bool St12
+        {
+            get
+            { return MissionAccomplished[1]; }
+            set
+            {
+                MissionAccomplished[1] = value;
+            }
+        }
+
         public int Tour13
         {
             get
@@ -52,6 +64,17 @@ namespace WindowsFormsApp1
             set
             {
                 Rounds[2] = value;
+            }
+        }
+
+
+        public bool St13
+        {
+            get
+            { return MissionAccomplished[2]; }
+            set
+            {
+                MissionAccomplished[2] = value;
             }
         }
 
@@ -64,6 +87,16 @@ namespace WindowsFormsApp1
                 Rounds[3] = value;
             }
         }
+
+        public bool St14
+        {
+            get
+            { return MissionAccomplished[3]; }
+            set
+            {
+                MissionAccomplished[3] = value;
+            }
+        }
         public int Tour21
         {
             get
@@ -71,6 +104,16 @@ namespace WindowsFormsApp1
             set
             {
                 Rounds[4] = value;
+            }
+        }
+
+        public bool St21
+        {
+            get
+            { return MissionAccomplished[4]; }
+            set
+            {
+                MissionAccomplished[4] = value;
             }
         }
         public int Tour22
@@ -83,102 +126,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        public int Tour23
-        {
-            get
-            { return Rounds[6]; }
-            set
-            {
-                Rounds[6] = value;
-            }
-        }
-
-        public int Tour24
-        {
-            get
-            { return Rounds[7]; }
-            set
-            {
-                Rounds[7] = value;
-            }
-        }
-        public int Tour31
-        {
-            get
-            { return Rounds[8]; }
-            set
-            {
-                Rounds[8] = value;
-            }
-        }
-        public int Tour32
-        {
-            get
-            { return Rounds[9]; }
-            set
-            {
-                Rounds[9] = value;
-            }
-        }
-
-        public int Tour33
-        {
-            get
-            { return Rounds[10]; }
-            set
-            {
-                Rounds[10] = value;
-            }
-        }
-
-        public int Tour34
-        {
-            get
-            { return Rounds[11]; }
-            set
-            {
-                Rounds[11] = value;
-            }
-        }
-
-        public bool St12
-        {
-            get
-            { return MissionAccomplished[1]; }
-            set
-            {
-                MissionAccomplished[1] = value;
-            }
-        }
-
-        public bool St13
-        {
-            get
-            { return MissionAccomplished[2]; }
-            set
-            {
-                MissionAccomplished[2] = value;
-            }
-        }
-
-        public bool St14
-        {
-            get
-            { return MissionAccomplished[3]; }
-            set
-            {
-                MissionAccomplished[3] = value;
-            }
-        }
-        public bool St21
-        {
-            get
-            { return MissionAccomplished[4]; }
-            set
-            {
-                MissionAccomplished[4] = value;
-            }
-        }
         public bool St22
         {
             get
@@ -186,6 +133,15 @@ namespace WindowsFormsApp1
             set
             {
                 MissionAccomplished[5] = value;
+            }
+        }
+        public int Tour23
+        {
+            get
+            { return Rounds[6]; }
+            set
+            {
+                Rounds[6] = value;
             }
         }
 
@@ -198,6 +154,17 @@ namespace WindowsFormsApp1
                 MissionAccomplished[6] = value;
             }
         }
+        public int Tour24
+        {
+            get
+            { return Rounds[7]; }
+            set
+            {
+                Rounds[7] = value;
+            }
+        }
+
+
         public bool St24
         {
             get
@@ -207,6 +174,18 @@ namespace WindowsFormsApp1
                 MissionAccomplished[7] = value;
             }
         }
+
+        public int Tour31
+        {
+            get
+            { return Rounds[8]; }
+            set
+            {
+                Rounds[8] = value;
+            }
+        }
+
+
         public bool St31
         {
             get
@@ -216,6 +195,16 @@ namespace WindowsFormsApp1
                 MissionAccomplished[8] = value;
             }
         }
+        public int Tour32
+        {
+            get
+            { return Rounds[9]; }
+            set
+            {
+                Rounds[9] = value;
+            }
+        }
+
         public bool St32
         {
             get
@@ -223,6 +212,17 @@ namespace WindowsFormsApp1
             set
             {
                 MissionAccomplished[9] = value;
+            }
+        }
+
+
+        public int Tour33
+        {
+            get
+            { return Rounds[10]; }
+            set
+            {
+                Rounds[10] = value;
             }
         }
 
@@ -235,6 +235,15 @@ namespace WindowsFormsApp1
                 MissionAccomplished[10] = value;
             }
         }
+        public int Tour34
+        {
+            get
+            { return Rounds[11]; }
+            set
+            {
+                Rounds[11] = value;
+            }
+        }
 
         public bool St34
         {
@@ -245,8 +254,11 @@ namespace WindowsFormsApp1
                 MissionAccomplished[11] = value;
             }
         }
+        [XmlIgnore]
         public int[] RoundsFull { get; set; }
+        [XmlIgnore]
         public bool[] MissionAccomplished { get; set; }
+        [XmlIgnore]
         public int[] Rounds { get; set; }
         public int Sum { get; set; }
         public int LastAnswer { get; set; }
@@ -267,15 +279,14 @@ namespace WindowsFormsApp1
             for (int i=0;i <12; i++)
             {
                 RoundsFull[i] = Rounds[i];
-                if (MissionAccomplished[i] == true)
-                    RoundsFull[i] += Rounds[i];
+                //if (MissionAccomplished[i] == true)
+                //    RoundsFull[i] += Rounds[i];
                 sum += RoundsFull[i];
             }
 
             Sum = sum;
 
         }
-
 
     }
 
