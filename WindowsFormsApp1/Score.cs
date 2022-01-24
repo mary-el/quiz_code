@@ -297,6 +297,7 @@ namespace WindowsFormsApp1
         public int ShowPlace { get; set; }
         public string team { get; set; }
         public int ScoreBeforeTour { get; set; }
+        public string ScoreBeforeTourStr { get; set; }
         public int CurrentTeamScore { get; set; }
         public int CurrentStalkersScore { get; set; }
 

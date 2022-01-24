@@ -76,30 +76,29 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public bool OpenPics()
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
+                return false;
 
             string filename = openFileDialog1.FileName;
             try
             {
-                game = Game.Deserialize(filename);
-            }
-            catch
-            {
-                MessageBox.Show("Неправильный формат файла");
-                return;
-            }
-            try
-            {
-                pics = Pics.Deserialize(game.PicsFile);
+                pics = Pics.Deserialize(filename);
             }
             catch
             {
                 MessageBox.Show("Неправильный формат файла картинок");
-                return;
+                return false;
             }
+            return true;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!OpenPics())
+                return;
             logs = new Logs(game.LogFile);
             if (game.TourN == -1)
             {
@@ -125,6 +124,34 @@ namespace WindowsFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             CreateQuizTemplate();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!OpenPics())
+                return;
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            try
+            {
+                var formatter = new XmlSerializer(typeof(List<Score>));
+                using (FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open))
+                {
+                    List<Score> ScoreList = (List<Score>)formatter.Deserialize(fs);
+
+                    ResultsByTour.scores = ScoreList;
+                    ResultsByTour startsettingsform = new ResultsByTour();
+                    startsettingsform.Show();
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Неправильный формат файла");
+                return;
+            }
+
         }
     }
 }

@@ -762,7 +762,7 @@ namespace WindowsFormsApp1
         }
         private void GameForm_Load(object sender, EventArgs e)
         {
-
+            myDataGridView1.ClearSelection();
             lbs = new myListBox[] {
                 listBox2,
                 listBox3,
@@ -1051,7 +1051,7 @@ namespace WindowsFormsApp1
             label9.ForeColor = TeamsColor;
             label11.Font = fontSelectedTeams;
             label11.ForeColor = TeamsColor;
-            myDataGridView1.RowTemplate.Height = (int)((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / 12);
+            myDataGridView1.RowTemplate.Height = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / 12);
             ResetStalkers();
             
         }
@@ -1356,6 +1356,10 @@ namespace WindowsFormsApp1
                 for (int j = 0; j < LastTour; j++)
                     for (int k = 0; k < 4; k++)
                     res.ScoreBeforeTour += ScoreList[i].RoundsFull[j*4 + k];
+                if (res.ScoreBeforeTour == 0)
+                    res.ScoreBeforeTourStr = " ";
+                else
+                    res.ScoreBeforeTourStr = res.ScoreBeforeTour.ToString();
                 res.CurrentTeamScore = 0;
                 for (int k = 0; k < 4; k++)
                 {
@@ -2415,6 +2419,12 @@ namespace WindowsFormsApp1
 
         private void tableLayoutPanel21_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void myDataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            myDataGridView1.ClearSelection();
 
         }
     }
