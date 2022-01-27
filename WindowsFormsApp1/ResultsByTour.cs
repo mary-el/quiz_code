@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
         private void ResultsByTour_Load(object sender, EventArgs e)
         {
             myDataGridView1.ClearSelection();
-            scores = scores.OrderBy(u => u.Place).ToList();
+            scores = scores.OrderBy(u => u.RealPlace).ToList();
             Pics pics = StartForm.pics;
             PrivateFontCollection fontCollection = new PrivateFontCollection();
             FontFamily familyQ;
@@ -64,6 +64,8 @@ namespace WindowsFormsApp1
             Font fontTeamsGame = new Font(familyTeams, pics.FontSizeTeamsGame);
             Font fontExpN = new Font(familyTeams, pics.FontSizeExpN);
             Color ColorQ = ColorTranslator.FromHtml(pics.FontColorQ);
+            Color ColorResults = ColorTranslator.FromHtml(pics.FontColorResults);
+            Color ColorRunners = ColorTranslator.FromHtml(pics.FontColorRunners);
             Color TeamsColor = ColorTranslator.FromHtml(pics.FontColorTeams);
             Color TeamsSelectedColor = ColorTranslator.FromHtml(pics.FontColorSelectedTeams);
             Color ColorHelp = ColorTranslator.FromHtml(pics.FontColorHelp);
@@ -72,34 +74,45 @@ namespace WindowsFormsApp1
             myDataGridView1.RowTemplate.DefaultCellStyle.Font = fontTeams;
             myDataGridView1.RowHeadersDefaultCellStyle.Font = fontTeams;
             myDataGridView1.Font = fontSelectedTeams;
-            myDataGridView1.ForeColor = ColorQ;
+            myDataGridView1.ForeColor = ColorResults;
             myDataGridView1.Columns[5].DefaultCellStyle.ForeColor = TeamsSelectedColor;
             myDataGridView1.Columns[6].DefaultCellStyle.ForeColor = ColorHelp;
-            myDataGridView1.RowTemplate.Height = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / 12);
+            int VisibleTeams = scores.FindAll(u => u.Invisible == false).Count();
+
+            myDataGridView1.RowTemplate.Height = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / VisibleTeams);
             label1.Font = fontExpName;
-            label1.ForeColor = ColorQ;
+            label1.ForeColor = ColorResults;
             label1.Text = pics.ResultsName;
+            int j = 0;
             foreach (Score score in scores)
             {
                 string start = "";
-                if (score.Place < 0)
+                string place = "";
+                if (score.Start < 0)
                     continue;
                 if (score.Start > 0)
                     start = score.Start.ToString();
+                if (score.Place > 0)
+                    place = score.Place.ToString();
                 int tour1 = 0;
                 int tour2 = 0;
                 int tour3 = 0;
                 for (int i=0; i<4; i++)
                 {
-                    tour1 += score.RoundsFull[i];
-                    tour2 += score.RoundsFull[4 + i];
-                    tour3 += score.RoundsFull[8 + i];
+                    tour1 += score.Rounds[i];
+                    tour2 += score.Rounds[4 + i];
+                    tour3 += score.Rounds[8 + i];
                 }
-                myDataGridView1.Rows.Add(score.Team, start, tour1.ToString(), tour2, tour3, score.Sum, score.Place);
+                myDataGridView1.Rows.Add(score.Team, start, tour1.ToString(), tour2, tour3, score.Sum, place);
+                if (score.Place == 1)
+                    myDataGridView1.Rows[j].Cells[0].Style.ForeColor = TeamsSelectedColor;
+                else
+                if (score.Place <= 3)
+                    myDataGridView1.Rows[j].Cells[0].Style.ForeColor = ColorHelp;
+                if (score.Place == -1)
+                    myDataGridView1.Rows[j].Cells[0].Style.ForeColor = ColorRunners;
+                j += 1;
             }
-            myDataGridView1.Rows[0].Cells[0].Style.ForeColor = TeamsSelectedColor;
-            myDataGridView1.Rows[1].Cells[0].Style.ForeColor = ColorHelp;
-            myDataGridView1.Rows[2].Cells[0].Style.ForeColor = ColorHelp;
         }
 
         private void myDataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -131,7 +144,9 @@ namespace WindowsFormsApp1
 
         private void ResultsByTour_ClientSizeChanged(object sender, EventArgs e)
         {
-            int h = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / 12);
+
+            int VisibleTeams = scores.FindAll(u => u.Invisible == false).Count();
+            int h = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / VisibleTeams);
             foreach (DataGridViewRow row in myDataGridView1.Rows)
             {
                 row.Height = h;

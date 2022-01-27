@@ -28,9 +28,9 @@ namespace WindowsFormsApp1
             }
 
             Settings = new List<GameSettings>();
-            Settings.Add(new GameSettings() {TourN=1, StalkersMethod=1, Length=4, Cost = new int[] {8, 6, 4, 2 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true, NoStalkers=true});
-            Settings.Add(new GameSettings() {TourN=2, StalkersMethod=1, Length=4, Cost = new int[] {8, 6, 4, 2 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true, NoStalkers=true});
-            Settings.Add(new GameSettings() {TourN=3, StalkersMethod=1, Length=4, Cost = new int[] {12, 9, 6, 3}, Bonus=10, CostsSt = new int[] { 8, 6, 4, 2}, Individual=true, NoStalkers=false});
+            Settings.Add(new GameSettings() {TourN=1, StalkersMethod=1, Length=4, Cost = new int[] {1, 1, 1, 1 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true, NoStalkers=true});
+            Settings.Add(new GameSettings() {TourN=2, StalkersMethod=1, Length=4, Cost = new int[] {1, 1, 1, 1 }, Bonus=5, CostsSt = new int[] { 4, 3, 2, 1 }, Individual=true, NoStalkers=true});
+            Settings.Add(new GameSettings() {TourN=3, StalkersMethod=1, Length=4, Cost = new int[] {1, 1, 1, 1 }, Bonus=10, CostsSt = new int[] { 8, 6, 4, 2}, Individual=true, NoStalkers=true});
 
         }
         private int Fields = 11;

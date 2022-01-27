@@ -70,9 +70,11 @@ namespace WindowsFormsApp1
         public int FontSizeTeamsGame { get; set; } = 15;
         public string FontColorTeams { get; set; } = "0xe6e6e6ff";
         public string FontColorSelectedTeams { get; set; } = "0x9ec82ff";
-        public string FontColorExp { get; set; } = "0xe6e6e6ff";
+        public string FontColorExp { get; set; } = "0xe6e6e6ff";    
         public string FontColorCost { get; set; } = "0xff00ff";
         public string FontColorQ { get; set; } = "0xffffff";
+        public string FontColorResults { get; set; } = "0xaaaaaa";
+        public string FontColorRunners { get; set; } = "0xff0000";
         public string BackColorQ { get; set; } = "0x000000";
         public string FontColorHelp { get; set; } = "0x00ffff";
         public string FontColorMission { get; set; } = "0xff0000";

@@ -698,6 +698,7 @@ namespace WindowsFormsApp1
         Color ColorQ;
         Color BackColorQ;
         Color ColorHelp;
+        Color ColorRunners;
         Color ColorMission;
         
 
@@ -809,6 +810,7 @@ namespace WindowsFormsApp1
             BackColorQ = ColorTranslator.FromHtml(pics.BackColorQ);
             ColorHelp = ColorTranslator.FromHtml(pics.FontColorHelp);
             ColorMission = ColorTranslator.FromHtml(pics.FontColorMission);
+            ColorRunners = ColorTranslator.FromHtml(pics.FontColorRunners);
             
 
             qTextBox11.Font = fontQ;
@@ -1051,7 +1053,9 @@ namespace WindowsFormsApp1
             label9.ForeColor = TeamsColor;
             label11.Font = fontSelectedTeams;
             label11.ForeColor = TeamsColor;
-            myDataGridView1.RowTemplate.Height = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / 12);
+            int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
+
+            myDataGridView1.RowTemplate.Height = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / VisibleTeams);
             ResetStalkers();
             
         }
@@ -1570,6 +1574,8 @@ namespace WindowsFormsApp1
 
                     }
 
+                    int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
+                    myDataGridView1.RowTemplate.Height = ((myDataGridView1.Height - myDataGridView1.ColumnHeadersHeight) / VisibleTeams);
                 }
                 foreach (Score s in ScoreList)
                 {
@@ -1946,7 +1952,10 @@ namespace WindowsFormsApp1
             {
                 resultsBindingSource.Insert(0, results[resultsBindingSource.Count]);
                 int place = results[resultsBindingSource.Count - 1].ShowPlace;
-                if ((place < 4) && (place > 0))
+                if (place <= 0)
+                    myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorRunners;
+                else
+                if (place < 4)
                 {
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
                     if (place == 1)
@@ -1954,6 +1963,7 @@ namespace WindowsFormsApp1
                 }
                 else
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = TeamsColor;
+
                 for (int i=0; i<4; i++)
                 {
                     bool acc = results[resultsBindingSource.Count - 1].MissionAccomplished[i];

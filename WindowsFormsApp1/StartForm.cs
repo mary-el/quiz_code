@@ -97,8 +97,30 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!OpenPics())
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
+
+            string filename = openFileDialog1.FileName;
+            try
+            {
+                game = Game.Deserialize(filename);
+            }
+            catch
+            {
+                MessageBox.Show("Неправильный формат файла игры");
+                return;
+            }
+
+            try
+            {
+                pics = Pics.Deserialize(game.PicsFile);
+            }
+            catch
+            {
+                MessageBox.Show("Неправильный формат файла картинок");
+                return;
+            }
+
             logs = new Logs(game.LogFile);
             if (game.TourN == -1)
             {

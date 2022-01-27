@@ -283,9 +283,9 @@ namespace WindowsFormsApp1
                 //    RoundsFull[i] += Rounds[i];
                 sum += RoundsFull[i];
             }
-
             Sum = sum;
-
+            if (Start < 0)
+                Invisible = true;
         }
 
     }
