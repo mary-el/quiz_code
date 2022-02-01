@@ -78,6 +78,7 @@ namespace WindowsFormsApp1
         bool ResultsChanged = false;
         myListBox[] lbs;
         int answers_to_complete_mission = 0;
+        int Tour3TopTeam = -1;
 
         public void SetPictQ(Image pict)
         {
@@ -699,6 +700,7 @@ namespace WindowsFormsApp1
         Color BackColorQ;
         Color ColorHelp;
         Color ColorRunners;
+        Color ColorResults;
         Color ColorMission;
         
 
@@ -811,6 +813,7 @@ namespace WindowsFormsApp1
             ColorHelp = ColorTranslator.FromHtml(pics.FontColorHelp);
             ColorMission = ColorTranslator.FromHtml(pics.FontColorMission);
             ColorRunners = ColorTranslator.FromHtml(pics.FontColorRunners);
+            ColorResults = ColorTranslator.FromHtml(pics.FontColorResults);
             
 
             qTextBox11.Font = fontQ;
@@ -1014,7 +1017,7 @@ namespace WindowsFormsApp1
             myDataGridView1.RowTemplate.DefaultCellStyle.Font = fontTeams;
             myDataGridView1.RowHeadersDefaultCellStyle.Font = fontTeams;
             myDataGridView1.Font = fontSelectedTeams;
-            myDataGridView1.ForeColor = ColorQ;
+            myDataGridView1.ForeColor = ColorResults;
             myDataGridView1.Columns[7].DefaultCellStyle.ForeColor = TeamsSelectedColor;
             myDataGridView1.Columns[8].DefaultCellStyle.ForeColor = ColorHelp;
             // myDataGridView1.RowHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -1340,6 +1343,7 @@ namespace WindowsFormsApp1
             ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenByDescending(u => u.RoundsFull[11]).ThenByDescending(u => u.RoundsFull[10]).ThenByDescending(u => u.RoundsFull[9]).ThenByDescending(u => u.RoundsFull[8]).ThenByDescending(u => u.RoundsFull[7]).ThenByDescending(u => u.RoundsFull[6]).ThenByDescending(u => u.RoundsFull[5]).ThenByDescending(u => u.RoundsFull[4]).ThenByDescending(u => u.RoundsFull[3]).ThenByDescending(u => u.RoundsFull[2]).ThenByDescending(u => u.RoundsFull[1]).ThenByDescending(u => u.RoundsFull[0]).ToList();
             int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
             int show_place = 1;
+            List<int> top3 = new List<int>();
             for (int i = 0; i < VisibleTeams; i++)
             {       
                 Results res = new Results();
@@ -1348,9 +1352,12 @@ namespace WindowsFormsApp1
                 {
                     res.ShowPlaceStr = " ";
                     res.ShowPlace = -1;
+                    top3.Add(ScoreList[i].TeamN);
                 }
                 else
                 {
+                    if (show_place <= 3)
+                        top3.Add(ScoreList[i].TeamN);
                     res.ShowPlaceStr = show_place.ToString();
                     res.ShowPlace = show_place;
                     show_place += 1;
@@ -1377,6 +1384,20 @@ namespace WindowsFormsApp1
             results = results.OrderByDescending(u => u.Place).ToList();
             ScoreList = ScoreList.OrderBy(u => u.TeamN).ToList();
             dataGridView1.Refresh();
+            if (current_tour == 3)
+            {
+                Tour3TopTeam = -1;
+                List<Score> sorted_by_3 = ScoreList.OrderByDescending(u => u.Tour31 + u.Tour32 + u.Tour33 + u.Tour34).ThenByDescending(u => u.Tour34).ThenByDescending(u => u.Tour33).ThenByDescending(u => u.Tour32).ThenByDescending(u => u.Tour31).ToList();
+                foreach (Score s in sorted_by_3)
+                {
+                    if (top3.Contains(s.TeamN))
+                        continue;
+                    Tour3TopTeam = s.Place;
+                    break;
+                    
+                }
+
+            }
         }
 
         private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1962,7 +1983,10 @@ namespace WindowsFormsApp1
                         myDataGridView1.Rows[0].Cells[0].Style.ForeColor = CostColor;
                 }
                 else
-                    myDataGridView1.Rows[0].Cells[0].Style.ForeColor = TeamsColor;
+                if (place == Tour3TopTeam)
+                    myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
+                else
+                myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorResults;
 
                 for (int i=0; i<4; i++)
                 {
@@ -1970,7 +1994,7 @@ namespace WindowsFormsApp1
                     if (acc == true)
                         myDataGridView1.Rows[0].Cells[i + 3].Style.ForeColor = ColorMission;
                     else
-                        myDataGridView1.Rows[0].Cells[i + 3].Style.ForeColor = TeamsColor;
+                        myDataGridView1.Rows[0].Cells[i + 3].Style.ForeColor = ColorResults;
 
                 }
 
