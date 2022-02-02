@@ -2461,5 +2461,66 @@ namespace WindowsFormsApp1
             myDataGridView1.ClearSelection();
 
         }
-    }
+
+        private void CopyScore(int n1, int n2)
+        {
+            Score score1 = ScoreList[n1];
+            for (int i = 0; i < score1.Rounds.Length; i++)
+            {
+                if (ScoreList[n2].Rounds[i] <= score1.Rounds[i])
+                {
+                    ScoreList[n2].Rounds[i] = score1.Rounds[i];
+                }
+                if (score1.MissionAccomplished[i])
+                    ScoreList[n2].MissionAccomplished[i] = score1.MissionAccomplished[i];
+            }
+        }
+
+        private void button9_Click_2(object sender, EventArgs e)
+        {
+            List<int> runners = new List<int>();
+            for (int i = 0; i < ScoreList.Count; i++)
+            {
+                if (game.Teams[ScoreList[i].TeamN].Running == true)
+                {
+                    runners.Add(i);
+                }
+            }
+            if (runners.Count == 7)
+            {
+                CopyScore(runners[0], runners[1]);
+                CopyScore(runners[0], runners[2]);
+                for (int i = 3; i < 7; i++)
+                    CopyScore(runners[0], runners[i]);
+
+                CopyScore(runners[1], runners[3]);
+                CopyScore(runners[1], runners[4]);
+                CopyScore(runners[2], runners[5]);
+                CopyScore(runners[2], runners[6]);
+            }
+            else
+                if (runners.Count == 5)
+            {
+                for (int i = 1; i < 5; i++)
+                    CopyScore(runners[0], runners[i]);
+
+            }
+            else
+            {
+                ShowMessage("Неверное число бегунов");
+                return;
+            }
+
+            foreach (Score s in ScoreList)
+            {
+                s.RecountSum();
+            }
+            scoreBindingSource.DataSource = ScoreList;
+            CalculatePlaces();
+            game.ScoresFinal = ScoreList;
+            game.Serialize();
+            ResultsChanged = true;
+        }
+
+        }
 }
