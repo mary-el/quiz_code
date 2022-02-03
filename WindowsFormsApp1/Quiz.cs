@@ -78,6 +78,8 @@ namespace WindowsFormsApp1
         public string BackColorQ { get; set; } = "0x000000";
         public string FontColorHelp { get; set; } = "0x00ffff";
         public string FontColorMission { get; set; } = "0xff0000";
+        public string FontColorLeader { get; set; } = "0xffff00";
+        public string FontColorSum { get; set; } = "0xff0000";
         public string ResultsName { get; set; } = "";
         public Pics() { }
 

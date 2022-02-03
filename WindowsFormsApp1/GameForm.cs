@@ -702,6 +702,8 @@ namespace WindowsFormsApp1
         Color ColorRunners;
         Color ColorResults;
         Color ColorMission;
+        Color ColorLeader;
+        Color ColorSum;
         
 
         private void Form1_Load(object sender, EventArgs e)
@@ -814,6 +816,8 @@ namespace WindowsFormsApp1
             ColorMission = ColorTranslator.FromHtml(pics.FontColorMission);
             ColorRunners = ColorTranslator.FromHtml(pics.FontColorRunners);
             ColorResults = ColorTranslator.FromHtml(pics.FontColorResults);
+            ColorLeader = ColorTranslator.FromHtml(pics.FontColorLeader);
+            ColorSum = ColorTranslator.FromHtml(pics.FontColorSum);
             
 
             qTextBox11.Font = fontQ;
@@ -1980,7 +1984,7 @@ namespace WindowsFormsApp1
                 {
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
                     if (place == 1)
-                        myDataGridView1.Rows[0].Cells[0].Style.ForeColor = CostColor;
+                        myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorLeader;
                 }
                 else
                 if (place == Tour3TopTeam)
@@ -1997,6 +2001,7 @@ namespace WindowsFormsApp1
                         myDataGridView1.Rows[0].Cells[i + 3].Style.ForeColor = ColorResults;
 
                 }
+                myDataGridView1.Rows[0].Cells[7].Style.ForeColor = ColorSum;
 
                 myDataGridView1.Refresh();
 
