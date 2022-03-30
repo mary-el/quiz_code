@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Xml.Serialization;
 using System.Xml.Schema;
 using System.Xml;
+using ServiceStack.Text;
 
 namespace WindowsFormsApp1
 {
@@ -2411,12 +2412,13 @@ namespace WindowsFormsApp1
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                     return;
-
-
-                XmlSerializer formatter = new XmlSerializer(typeof(List<Score>));
+                
+                //XmlSerializer formatter = new XmlSerializer(typeof(List<Score>));
+                CsvSerializer formatter = new CsvSerializer();
                 using (FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create))
                 {
-                    formatter.Serialize(fs, ScoreList);
+                    fs.WriteCsv(ScoreList);
+                    //formatter.Serialize(fs, ScoreList);
                 }
             }
             catch
@@ -2427,17 +2429,18 @@ namespace WindowsFormsApp1
         
         private void button6_Click_1(object sender, EventArgs e)
         {
+                List<Score> old_sl = new List<Score>(ScoreList);
             try
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                     return;
 
-                var formatter = new XmlSerializer(typeof(List<Score>));
+                // var formatter = new System.Xml.Serialization.XmlSerializer(typeof(List<Score>));
 
                 using (FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open))
                 {
-                    ScoreList = (List<Score>)formatter.Deserialize(fs);
-
+                    //ScoreList = (List<Score>)formatter.Deserialize(fs);
+                    ScoreList = CsvSerializer.DeserializeFromStream<List<Score>>(fs);
                     foreach (Score s in ScoreList)
                     {
                         s.RecountSum();
@@ -2452,6 +2455,13 @@ namespace WindowsFormsApp1
             }
             catch
             {
+                ScoreList = old_sl;
+
+                foreach (Score s in ScoreList)
+                {
+                    s.RecountSum();
+                }
+                scoreBindingSource.DataSource = ScoreList;
                 ShowMessage("Ошибка при загрузке файла");
             }
         }

@@ -262,8 +262,7 @@ namespace WindowsFormsApp1
         public int[] Rounds { get; set; }
         public int Sum { get; set; }
         public int LastAnswer { get; set; }
-        public int OldLastAnswer { get; set; }       
-           
+        public int OldLastAnswer { get; set; }
         public Score()
         {
             RoundsFull = new int[12];
