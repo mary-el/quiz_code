@@ -14,8 +14,8 @@ using System.Diagnostics;
 using System.Xml.Serialization;
 using System.Xml.Schema;
 using System.Xml;
-// using ServiceStack.Text;
 using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace WindowsFormsApp1
 {
@@ -2410,19 +2410,16 @@ namespace WindowsFormsApp1
         {
             try
             {
-
+                var cfg = new CsvConfiguration(CultureInfo.InvariantCulture);
+                cfg.Delimiter = ";";
+                cfg.Encoding = Encoding.Unicode;
                 if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                     return;
-
-                //XmlSerializer formatter = new XmlSerializer(typeof(List<Score>));
-                // CsvSerializer formatter = new CsvSerializer();
-                //using (FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create))
+                
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                    using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                    using (var csv = new CsvWriter(writer, cfg))
                     {
                     csv.WriteRecords(ScoreList);
-                    //fs.WriteCsv(ScoreList);
-                    //formatter.Serialize(fs, ScoreList);
                     }
             }
             catch
@@ -2433,20 +2430,21 @@ namespace WindowsFormsApp1
         
         private void button6_Click_1(object sender, EventArgs e)
         {
-                List<Score> old_sl = new List<Score>(ScoreList);
+            List<Score> old_sl = new List<Score>(ScoreList);
+            try
+            {
+                var cfg = new CsvConfiguration(CultureInfo.InvariantCulture);
+                cfg.Delimiter = ";";
+                cfg.ShouldQuote = args => args.Row.Index == 4;
+                cfg.Encoding = Encoding.UTF8;
+
                 if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                     return;
 
-                // var formatter = new System.Xml.Serialization.XmlSerializer(typeof(List<Score>));
-
-                //using (FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open))
-
                 using (var reader = new StreamReader(openFileDialog1.FileName))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                using (var csv = new CsvReader(reader, cfg))
                 {
                     ScoreList = csv.GetRecords<Score>().ToList();
-                    //ScoreList = (List<Score>)formatter.Deserialize(fs);
-                    //ScoreList = CsvSerializer.DeserializeFromStream<List<Score>>(fs);
                     foreach (Score s in ScoreList)
                     {
                         s.RecountSum();
@@ -2458,6 +2456,19 @@ namespace WindowsFormsApp1
                     game.Serialize();
                     ResultsChanged = true;
                 }
+            }
+            catch
+            {
+                ScoreList = old_sl;
+
+                foreach (Score s in ScoreList)
+                {
+                    s.RecountSum();
+                }
+                scoreBindingSource.DataSource = ScoreList;
+                ShowMessage("Ошибка при загрузке файла");
+
+            }
         }
 
         private void tableLayoutPanel21_Paint(object sender, PaintEventArgs e)
