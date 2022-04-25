@@ -95,9 +95,9 @@ namespace WindowsFormsApp1
                 StartForm.logs = new Logs(StartForm.game.LogFile);
                 StartForm.logs.CreateFile();
 
-                if ((st1 != StartForm.game.Stalkers) || (st2 != StartForm.game.Stalkers))
+                if ((st1 > StartForm.game.Stalkers) || (st2 > StartForm.game.Stalkers))
                  {
-                     MessageBox.Show("Число сталкеров не совпадает с заявленным", "", MessageBoxButtons.OK);
+                     MessageBox.Show("Число сталкеров больше заявленного", "", MessageBoxButtons.OK);
                      return;
                  }
                 StartForm.game.StalkersDelegated = Delegated;

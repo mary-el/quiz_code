@@ -13,8 +13,6 @@ namespace WindowsFormsApp1
         public int Length { get; set; }
         public int StalkersMethod { get; set; }
         public int[] Cost { get; set; }
-        
-        public int Bonus { get; set; }
         public int[] CostsSt { get; set; }
         public bool Individual { get; set; }
         public GameSettings() { }
@@ -27,7 +25,6 @@ namespace WindowsFormsApp1
                 text += $"{i} ";
             text += $"Метод определения очерёдности сталкеров: {methods[StalkersMethod]} ";
             text += $"Длина: {Length} ";
-            text += $"Бонус неотвечавшему: {Bonus} ";
             text += "Стоимость для первого сталкера: ";
             foreach (int i in CostsSt)
                 text += $"{i} ";

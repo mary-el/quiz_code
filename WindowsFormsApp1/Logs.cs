@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
             catch { }
 
         }
-        public void AddExp(int[] PlayingStalkers, int[] current_scores, int expNum)
+        public void AddExp(List<int> PlayingStalkers, int[] current_scores, int expNum)
         {
             try
             {

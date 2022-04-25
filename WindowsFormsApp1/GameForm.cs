@@ -58,11 +58,12 @@ namespace WindowsFormsApp1
         public int TimerT;
         public int TimerLeft;
         public int[] costsTable;
-        public int bonus;
         public int[,] ArrayA;
         public List<Score> ScoreList;
-        public int[] PlayingStalkers;
+        // public int[] PlayingStalkers;
+        public List<int> PlayingStalkers;
         public int PlayingStalkerNum;
+        public int PlayingStalkerNumShow;
         public int[] answered;
         int answered_count;
         public int[] current_scores;
@@ -85,6 +86,7 @@ namespace WindowsFormsApp1
         public int BestStalkerValue = -1;
         public int BestStalkerQ = -1;
         public string BestStalkerAnswer = "";
+        public int StalkersThisRound;
         public void SetPictQ(Image pict)
         {
             if (pict is null)
@@ -245,7 +247,7 @@ namespace WindowsFormsApp1
                     teamb[i].Font = fontTeams;
                 }
             }
-            if ((num == game.Stalkers) || (game.Round3On && next_tour == 2 && next_exp <= 1))
+            if (((num > 0) &&(num <= game.Stalkers)) || (game.Round3On && next_tour == 2 && next_exp <= 1))
                 enabled_game = true;
             else
                 enabled_game = false;
@@ -254,14 +256,22 @@ namespace WindowsFormsApp1
 
         public void ResetStalkers()
         {
-            PlayingStalkers = new int[game.Stalkers];
+            //PlayingStalkers = Enumerable.Repeat(-1, game.Stalkers).ToArray();
+            //PlayingStalkers = new int[game.Stalkers]
+            PlayingStalkers = new List<int>();
+            for (int i = 0; i < game.Stalkers; i++)
+            {
+                listBox2.Items[i] = "";
+                listBox1.Items[i] = "";
+            }
             for (int i = 0; i < game.Teams.Count; i++)
             {
                 int num = game.StalkersDelegated[current_tour][current_exp][i];
                 if (num > 0)
                 {
                     listBox1.Items[num - 1] = game.Teams[i].Name;
-                    PlayingStalkers[num - 1] = i;
+                    //PlayingStalkers[num - 1] = i;
+                    PlayingStalkers.Add(i);
                     if ((!game.Round3On) || current_tour != 2 || (current_exp > 1))
                         listBox2.Items[num - 1] = game.Teams[i].Name.ToUpper();
                     else
@@ -409,7 +419,8 @@ namespace WindowsFormsApp1
                     label7.Text = "";
                 }
 
-                costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * (Math.Max(PlayingStalkerNum, 0) + 2);
+                costsTable[i] = game.SettingsL[current_tour].CostsSt[0];
+                //costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * (Math.Max(PlayingStalkerNum, 0) + 2);
             }
 
             foreach (Score s in ScoreList)
@@ -418,6 +429,7 @@ namespace WindowsFormsApp1
                 s.PrevPlace = s.Place;
                 s.OldLastAnswer = s.LastAnswer;
             }
+            StalkersThisRound = PlayingStalkers.Count();
             CalculatePlaces();
             game.Serialize();
         //  dataGridView1.Sort(dataGridView1.Columns[8], ListSortDirection.Descending);
@@ -464,12 +476,11 @@ namespace WindowsFormsApp1
                 tabControl1.TabPages[6].Enabled = false;
                 return;
             }
-            bonus = game.SettingsL[current_tour].Bonus;
             costsTable = new int[4];
             ExpInTour = game.SettingsL[current_tour].Length;
             StalkerOrderMethod = game.SettingsL[current_tour].StalkersMethod;
             for (int i = 0; i < 4; i++)
-                costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * 2;
+                costsTable[i] = game.SettingsL[current_tour].CostsSt[0];
             IndTour = game.SettingsL[current_tour].Individual;
             
         }
@@ -993,6 +1004,7 @@ namespace WindowsFormsApp1
         public void ClearCosts()
         {
             PlayingStalkerNum = -1;
+            PlayingStalkerNumShow = -1;
             listBox2.selected_n = -1;
             listBox2.Refresh();
             for (int i = 0; i < 4; i++)
@@ -1043,25 +1055,28 @@ namespace WindowsFormsApp1
         private void SetPlayer(int newPlayer)
         {
             PlayingStalkerNum = newPlayer;
-            listBox2.selected_n = PlayingStalkerNum;
-            if ((answered_count == 4) && (IndTour))
-            {
-                if (PlayingStalkerNum < game.Stalkers)
-                    AddScore(PlayingStalkerNum, bonus);
-                ClearCosts();
-                return;
-            }
-            if (PlayingStalkerNum == game.Stalkers)
+            if (PlayingStalkerNum == PlayingStalkers.Count())
             {
                 ClearCosts();
                 return;
             }
+            if (PlayingStalkerNum < StalkersThisRound)
+                PlayingStalkerNumShow = PlayingStalkerNum;
+            else
+            {
+                PlayingStalkerNumShow = 0;
+                while (PlayingStalkers[PlayingStalkerNum] != PlayingStalkers[PlayingStalkerNumShow])
+                    PlayingStalkerNumShow += 1;
+            }
+            listBox2.selected_n = PlayingStalkerNumShow;
+    
             if (IndTour)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    costsTable[i] = game.SettingsL[current_tour].CostsSt[i] * (Math.Max(PlayingStalkerNum, 0) + 2);
-                    if (answered[i] == 0) 
+                    if (PlayingStalkerNum == StalkersThisRound)
+                        costsTable[i] = game.SettingsL[current_tour].CostsSt[1];
+                    if (answered[i] == 0)
                         costs[i].Text = "+" + (costsTable[i]).ToString();
                     else
                     {
@@ -1069,7 +1084,16 @@ namespace WindowsFormsApp1
                         helps[i].Text = "";
                     }
                 }
-
+            }
+            if ((answered_count == 4) && (IndTour))
+            {
+                while (PlayingStalkerNum < StalkersThisRound)
+                {
+                    AddScore(PlayingStalkerNum, game.SettingsL[current_tour].CostsSt[2]);
+                    PlayingStalkerNum += 1;
+                }
+                ClearCosts();
+                return;
             }
             listBox2.Refresh();
         }
@@ -1123,6 +1147,7 @@ namespace WindowsFormsApp1
             if ((PlayingStalkerNum >= 0) && (!game.Round3On || current_tour != 2 || current_exp > 1) && current_exp == game.ExpeditionN)
             {
                 int team = PlayingStalkers[PlayingStalkerNum];
+                PlayingStalkers.Add(team);
                 ScoreList[team].LastAnswer = 1;
                 for (int i = 0; i < game.Teams.Count; i++)
                 {
@@ -1134,7 +1159,7 @@ namespace WindowsFormsApp1
                 int cost = costsTable[tag];
                 if (IndTour)
                 {
-                    AddScore(PlayingStalkerNum, cost);
+                    AddScore(PlayingStalkerNumShow, cost);
                     if (cost > BestStalkerValue)
                     {
                         BestStalkerValue = cost;
@@ -1144,7 +1169,7 @@ namespace WindowsFormsApp1
                     }
                 }
                 else
-                    for (int i = 0; i < game.Stalkers; i++)
+                    for (int i = 0; i < StalkersThisRound; i++)
                         AddScore(i, cost);
                 CalculatePlaces();
                 try
@@ -1331,19 +1356,15 @@ namespace WindowsFormsApp1
         {
             answered_count = 0;
             PlayingStalkerNum = 0;
+            PlayingStalkerNumShow = 0;
             listBox2.selected_n = 0;
             Expedition Exp = quiz.Tours[current_tour].Expeditions[current_exp];
 
             for (int j = 0; j < 4; j++)
             {
                 answered[j] = 0;
-                costsTable[j] = game.SettingsL[current_tour].CostsSt[j] * 2;
+                costsTable[j] = game.SettingsL[current_tour].CostsSt[0];
                 costs[j].Text = "+" + costsTable[j].ToString();
-                /* else
-                {
-                    costs[j].Text = "";
-                    helps[j].Text = "";
-                } */
                 buttons[j].Text = Exp.Questions[j].Prompt;
                 if (IndTour)
                 {
@@ -1363,8 +1384,9 @@ namespace WindowsFormsApp1
         }
         public void CancelAnsw(bool TeamMistake)
         {
-            for (int i = 0; i < game.Stalkers; i++)
-                ScoreList[PlayingStalkers[i]].ToursSt[current_tour] -= current_scores[i];
+            for (int i = 0; i < StalkersThisRound; i++)
+                if (PlayingStalkers[i] >= 0)
+                    ScoreList[PlayingStalkers[i]].ToursSt[current_tour] -= current_scores[i];
              
             if (!TeamMistake)
                 ClearAnswers();
@@ -1383,11 +1405,13 @@ namespace WindowsFormsApp1
             }
             CalculatePlaces();
             PlayingStalkerNum = 0;
+            PlayingStalkerNumShow = 0;
             SetPlayer(PlayingStalkerNum);
             BestStalkerAnswer = "";
             BestStalkerQ = -1;
             BestStalkerTeam = -1;
             BestStalkerValue = -1;
+            ResetStalkers();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -1929,11 +1953,6 @@ namespace WindowsFormsApp1
                     CancelAnsw(true);
                     SetPlayer(-1);
                     return;
-                }
-                if (IndTour && PlayingStalkerNum >= 0)
-                {
-                    listBox3.Items[PlayingStalkerNum] = "";
-
                 }
             }
         }

@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
             TourN = 0;
             ExpeditionN = 0;
             RealExpN = 0;
+            Stalkers = 6;
             QuestionN = 0;
             StalkersDelegated = new List<List<List<int>>>();
             ScoresFinal = new List<Score>();
