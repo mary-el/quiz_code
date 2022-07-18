@@ -259,6 +259,14 @@ namespace WindowsFormsApp1
             //PlayingStalkers = Enumerable.Repeat(-1, game.Stalkers).ToArray();
             //PlayingStalkers = new int[game.Stalkers]
             PlayingStalkers = new List<int>();
+            for (int i = 0; i < game.Teams.Count; i++)
+            {
+                int num = game.StalkersDelegated[current_tour][current_exp][i];
+                if (num > 0)
+                {
+                    PlayingStalkers.Add(0);
+                }
+            }
             for (int i = 0; i < game.Stalkers; i++)
             {
                 listBox2.Items[i] = "";
@@ -270,8 +278,8 @@ namespace WindowsFormsApp1
                 if (num > 0)
                 {
                     listBox1.Items[num - 1] = game.Teams[i].Name;
-                    //PlayingStalkers[num - 1] = i;
-                    PlayingStalkers.Add(i);
+                    PlayingStalkers[num - 1] = i;
+                    //PlayingStalkers.Add(i);
                     if ((!game.Round3On) || current_tour != 2 || (current_exp > 1))
                         listBox2.Items[num - 1] = game.Teams[i].Name.ToUpper();
                     else
@@ -294,6 +302,7 @@ namespace WindowsFormsApp1
                 real_current_exp += step;
             current_q = -1;
             NextQuestion(0);
+            CalculatePlaces();
             for (int i=0; i<game.Teams.Count; i++)
             {
                 int q = game.StalkersDelegated[game.TourN][game.ExpeditionN][i];
@@ -1805,10 +1814,8 @@ namespace WindowsFormsApp1
             */
 
         }
-
-        private void myDataGridView1_Click_2(object sender, EventArgs e)
+        private void ResultsClick()
         {
-
             if (timer3.Enabled == true)
                 return;
             if (resultsBindingSource.Count < results.Count)
@@ -1828,6 +1835,10 @@ namespace WindowsFormsApp1
                 timer3.Enabled = true;
             }
 
+        }
+        private void myDataGridView1_Click_2(object sender, EventArgs e)
+        {
+            ResultsClick();
         }
 
         private void tableLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
@@ -2116,6 +2127,14 @@ namespace WindowsFormsApp1
                 WrongAnswer();
                 return;
             }
+
+            if ((e.KeyCode == Keys.Space) && (tabControl1.SelectedTab == tabPage7))
+            {
+                ResultsClick();
+                return;
+            }
+
+            return;
             int Num = e.KeyCode - Keys.D0;
             if (((tabControl1.SelectedTab == tabPage8) || (tabControl1.SelectedTab == tabPage1)) 
                 && Num >= 1 && Num <= 4)
