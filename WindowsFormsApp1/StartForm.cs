@@ -139,7 +139,7 @@ namespace WindowsFormsApp1
                 GameForm gameForm = new GameForm();
                 gameForm.Show();
             }
-
+            game.FileName = filename;
             this.Hide();
         }
 

@@ -1964,9 +1964,9 @@ namespace WindowsFormsApp1
         {
 
         }
-
-        private void myDataGridView1_Click_2(object sender, EventArgs e)
+        private void ResultsClick()
         {
+
             if (timer3.Enabled == true)
                 return;
             if (ResultsChanged == true)
@@ -1992,9 +1992,9 @@ namespace WindowsFormsApp1
                 if (place == Tour3TopTeam)
                     myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorHelp;
                 else
-                myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorResults;
+                    myDataGridView1.Rows[0].Cells[0].Style.ForeColor = ColorResults;
 
-                for (int i=0; i<4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     bool acc = results[resultsBindingSource.Count - 1].MissionAccomplished[i];
                     if (acc == true)
@@ -2010,6 +2010,10 @@ namespace WindowsFormsApp1
                 timer3.Enabled = true;
             }
 
+        }
+        private void myDataGridView1_Click_2(object sender, EventArgs e)
+        {
+            ResultsClick();
         }
 
         private void tableLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
@@ -2292,6 +2296,7 @@ namespace WindowsFormsApp1
         {
             StopExp();
         }
+
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F10)
@@ -2299,6 +2304,12 @@ namespace WindowsFormsApp1
             if ((e.KeyCode == Keys.N) && (tabControl1.SelectedTab == tabPage8))
             {
                 WrongAnswer();
+                return;
+            }
+
+            if ((e.KeyCode == Keys.Space) && (tabControl1.SelectedTab == tabPage7))
+            {
+                ResultsClick();
                 return;
             }
             int Num = e.KeyCode - Keys.D0;
@@ -2412,7 +2423,8 @@ namespace WindowsFormsApp1
             {
                 var cfg = new CsvConfiguration(CultureInfo.InvariantCulture);
                 cfg.Delimiter = ";";
-                cfg.Encoding = Encoding.Unicode;
+                cfg.Encoding = Encoding.UTF8;
+                //cfg.ShouldQuote = args => args.Row.Index == 4;
                 if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                     return;
                 
@@ -2435,7 +2447,7 @@ namespace WindowsFormsApp1
             {
                 var cfg = new CsvConfiguration(CultureInfo.InvariantCulture);
                 cfg.Delimiter = ";";
-                cfg.ShouldQuote = args => args.Row.Index == 4;
+                //cfg.ShouldQuote = args => args.Row.Index == 4;
                 cfg.Encoding = Encoding.UTF8;
 
                 if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
