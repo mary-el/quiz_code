@@ -285,6 +285,8 @@ namespace WindowsFormsApp1
             Sum = sum;
             if (Start < 0)
                 Invisible = true;
+            else
+                Invisible = false;
         }
 
     }

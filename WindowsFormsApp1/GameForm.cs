@@ -1338,7 +1338,7 @@ namespace WindowsFormsApp1
         private void GetResults()
         {
 
-            for (int i = 0; i < game.Stalkers; i++)
+            for (int i = 0; i < ScoreList.Count(); i++)
             {
                 ScoreList[i].RecountSum();
             }
@@ -1347,7 +1347,7 @@ namespace WindowsFormsApp1
             resultsBindingSource.Clear();
             int LastTour = Math.Max((current_exp > 0 ? game.TourN : game.TourN - 1), 0);
             ScoreList = ScoreList.OrderBy(u => u.Invisible).ThenByDescending(u => u.Sum).ThenByDescending(u => u.RoundsFull[11]).ThenByDescending(u => u.RoundsFull[10]).ThenByDescending(u => u.RoundsFull[9]).ThenByDescending(u => u.RoundsFull[8]).ThenByDescending(u => u.RoundsFull[7]).ThenByDescending(u => u.RoundsFull[6]).ThenByDescending(u => u.RoundsFull[5]).ThenByDescending(u => u.RoundsFull[4]).ThenByDescending(u => u.RoundsFull[3]).ThenByDescending(u => u.RoundsFull[2]).ThenByDescending(u => u.RoundsFull[1]).ThenByDescending(u => u.RoundsFull[0]).ToList();
-            int VisibleTeams = ScoreList.FindAll(u => u.Invisible == false).Count();
+            int VisibleTeams = ScoreList.FindAll(u => u.Start >= 0).Count();
             int show_place = 1;
             List<int> top3 = new List<int>();
             for (int i = 0; i < VisibleTeams; i++)
@@ -2345,26 +2345,28 @@ namespace WindowsFormsApp1
             {
                 return;
             }
-
-            for (int i = 0; i < e.RowCount; i++)
+            /*
+            for (int i = 0; i < ScoreList.Count(); i++)
             {
                 int index = e.RowIndex + i;  //get row index
                 int ind = ScoreList[index].TeamN;
                 ScoreList[ind].Invisible = true;
 
             }
+            */
             CalculatePlaces();
             CreateTeamsButton();
 
             int next_exp = current_exp + 1;
             int next_tour = current_tour + (next_exp / ExpInTour);
             next_exp %= ExpInTour;
-            if ((next_tour != 3) && (!game.Round3On || current_tour != 2 || current_exp != 0))
+            /*if ((next_tour != 3) && (!game.Round3On || current_tour != 2 || current_exp != 0))
             {
                 for (int i = 0; i < game.Teams.Count; i++)
                     game.StalkersDelegated[next_tour][next_exp][i] = -1;
             }
             SetButtonsColours();
+            */
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -2466,6 +2468,7 @@ namespace WindowsFormsApp1
                     CalculatePlaces();
                     game.ScoresFinal = ScoreList;
                     game.Serialize();
+                    GetResults();
                     ResultsChanged = true;
                 }
             }
